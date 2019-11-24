@@ -25,14 +25,14 @@ grammar_cjkRuby: true
 >通过这条命令安装我们所需要的
 
 >**conda create --name tensorflow python=3.7.4**
->创建 python 环境
+>创建 python 虚拟环境
 >conda create --name env_name python=edition
 
 ![](./images/1574342065091.png)
 
 >**conda env list**
 >**conda info --env**
->查看当前存在哪些虚拟环境
+>查看当前存在哪些 python 虚拟环境
 
 ![](./images/1574342872338.png)
 
@@ -43,5 +43,5 @@ grammar_cjkRuby: true
 
 
 >**conda remove --name base  tesorflow**
->conda remove --name your_env_name  package_name
+>conda remove --name env_name  package_name
 >删除环境中的某个包
