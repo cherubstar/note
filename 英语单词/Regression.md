@@ -18,3 +18,4 @@ grammar_cjkRuby: true
 | descent | n.  | 下降，下倾；坡道；血统；祖籍  |
 | optimal | adj.  | 最优的；最佳的 |
 | convex | adj.  | 凸出的；凸面的 |
+| generalization | n.  | 泛化；概括；一般化 |
