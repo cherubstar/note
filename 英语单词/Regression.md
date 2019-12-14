@@ -16,3 +16,4 @@ grammar_cjkRuby: true
 | scalar | adj. / n.  | 纯量的；标量的；无向量的 **/** 数量，标量   |
 | gradient | n.  | 斜率，倾斜度  |
 | descent | n.  | 下降，下倾；坡道；血统；祖籍  |
+| optimal | adj.  | 最优的；最佳的 |
