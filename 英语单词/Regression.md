@@ -5,7 +5,7 @@ grammar_cjkRuby: true
 ---
 
 
-| 单词 | 词性 | 意思  |
+| 单词 | 词性 | 词义  |
 | ---------- | --- | --- |
 | regression | n.  | 倒退;回归;退化 |
 | forecast | n. / v.  | 预测；预报 |
