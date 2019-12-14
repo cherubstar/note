@@ -9,8 +9,8 @@ grammar_cjkRuby: true
 | ---------- | --- | --- |
 | regression | n.  | 倒退;回归;退化 |
 | forecast | n. / v.  | 预测；预报 |
-|            |     |     |
-|            |     |     |
+| estimate | n. / v.  | 估计，估算，估价 |
+| evolution | n.  | 进化，演变，发展，渐进 |
 |            |     |     |
 |            |     |     |
 |            |     |     |
