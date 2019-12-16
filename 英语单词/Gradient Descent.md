@@ -19,3 +19,12 @@ grammar_cjkRuby: true
 | intuitive | adj.  | 凭直觉得到的；直觉的；易懂的 |
 | minima | n.  | 最小值；最少量 -minimum的复数 |
 | minimum | adj. / n.  | 最低的；最小的 **/** 最小值；最少量 |
+| Feature Scaling | .  | 特征缩放 |
+| standard deviation | n.  | 标准差 |
+| deviation | n.  | 背离；偏离；偏差 |
+| dimension | n.  | 维；尺寸；规模；范围 |
+| theory | n.  | 学说；论；理论；原理 |
+| differentiable | adj.  | 可辨的，可区分的，可微的 |
+| adversarial | adj.  | 敌对的 |
+| algorithm | n.  | 算法；计算程序 |
+| variance | n.  | 方差 |
