@@ -25,3 +25,4 @@ grammar_cjkRuby: true
 | corrupt | adj. / v.  | 贪污的；受贿的；腐败的；不诚实的；有错误的；/ 使腐化；使堕落；破坏 |
 | Underestimate | v. / n.  | 低估；对...估计不足 / 低估；轻视 |
 | validation | n.  | 生效；批准；验证；证实 |
+| sample | n. / v.  | 样品，样本 / 品尝；体验；取样 |
