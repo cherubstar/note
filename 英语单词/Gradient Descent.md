@@ -28,3 +28,6 @@ grammar_cjkRuby: true
 | adversarial | adj.  | 敌对的 |
 | algorithm | n.  | 算法；计算程序 |
 | variance | n.  | 方差 |
+| trade-off | n.  | 权衡，协调 |
+| baseline | n.  | 底线；基础；起点 |
+| validation | n.  | 生效；批准；验证；核实 |
