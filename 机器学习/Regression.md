@@ -172,6 +172,8 @@ Linear model
 
 ### 7、Redesign the Model Again
 
+>**Redesign the Model**
+
 ![](./images/1576590688473.png)
 
 >**Redesign the Loss Function**
