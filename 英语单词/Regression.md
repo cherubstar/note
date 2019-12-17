@@ -28,3 +28,5 @@ grammar_cjkRuby: true
 | sample | n. / v.  | 样品，样本 / 品尝；体验；取样 |
 | evaluate | v.  | 估计；评价；评估 |
 | bias | n. / v.  | 偏见；偏心；偏向；偏爱 / 使有偏见；使偏心 |
+| formulation | v.  | 配方；构想；表达方法 |
+| formula | v.  | 公式；方程式；计算式；方案；方法 |
