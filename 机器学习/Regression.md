@@ -119,3 +119,75 @@ w*,b* = arg min L(w,b)	-	穷举所有的(w,b)，看哪一个(w,b)能使 L(f) 的
 >**(w,b) 对 L(w,b) 的偏微分表示**
 
 ![](./images/1576580935348.png)
+
+### 5、Model Selection
+
+>**y = b + w*xcp**
+
+![](./images/1576581432090.png)
+
+>**y = b + w1*xcp + w2*(xcp)2**
+
+![](./images/1576581593303.png)
+
+>__y = b + w1*xcp + w2*(xcp)2 + w3*(xcp)3__
+
+![](./images/1576581660672.png)
+
+>__y = b + w1*xcp + w2*(xcp)2 + w3*(xcp)3 + w4*(xcp)4__
+
+![](./images/1576581832153.png)
+
+>__y = b + w1*xcp + w2*(xcp)2 + w3*(xcp)3 + w4*(xcp)4 + w5*(xcp)5__
+
+![](./images/1576581900762.png)
+
+>**模型选择**
+
+![](./images/1576582011804.png)
+```
+一个越复杂的 model 包含了越多的 function 的话，理论上就可以找出一个 function 让 Average 更低。
+```
+![](./images/1576582283217.png)
+```
+在 Training data 上有好的结果，在 Testing data 上不一定有好的结果，这种叫做overfitting。
+```
+
+### 6、Redesign the Model
+
+![](./images/1576582980238.png)
+```
+Linear model
+不同种类的‘宝可梦’利用的参数(w,b)不同
+```
+![](./images/1576583306396.png)
+
+```
+这些都是未考虑的因素
+```
+
+>**其他因素**
+
+![](./images/1576583408196.png)
+
+### 7、Redesign the Model Again
+
+![](./images/1576590688473.png)
+
+>**Redesign the Loss Function**
+
+![](./images/1576591122650.png)
+```
+原来的 Loss function 只考虑了 error，
+Regularization = Loss Function + λ*∑(wi)2		-	λ是一个常数
+当加上 λ*∑(wi)2 这一项时，参数值比较接近于 0 的 function，它是比较平滑的。
+平滑: 当输入有变化的时候，output 对输入的变化是比较不敏感的。
+
+y = b + ∑wi*xi，当对某一个 xi 加上 △xi 时，输出的变化为加上 (wi*△xi)，即
+y + wi*△xi = b + ∑wi*(xi + △xi)
+当 wi 越接近于 0 的时候，变化就越小，输出对输入就越不 sensitive，function 就是一个越平滑的 function。
+```
+![](./images/1576592216224.png)
+```
+当 λ 越大的时候，我们找到的 function 就越平滑
+```
