@@ -26,3 +26,4 @@ grammar_cjkRuby: true
 | underestimate | v. / n.  | 低估；对...估计不足 / 低估；轻视 |
 | validation | n.  | 生效；批准；验证；证实 |
 | sample | n. / v.  | 样品，样本 / 品尝；体验；取样 |
+| evaluate | v.  | 估计；评价；评估 |
