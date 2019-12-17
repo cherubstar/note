@@ -27,3 +27,4 @@ grammar_cjkRuby: true
 | validation | n.  | 生效；批准；验证；证实 |
 | sample | n. / v.  | 样品，样本 / 品尝；体验；取样 |
 | evaluate | v.  | 估计；评价；评估 |
+| bias | n. / v.  | 偏见；偏心；偏向；偏爱 / 使有偏见；使偏心 |
