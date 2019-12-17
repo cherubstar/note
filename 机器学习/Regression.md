@@ -59,7 +59,7 @@ yˆ1 & yˆ2: 表示一个完整的 object 的 output，是一个数值。
 Loss function 是 function 的 function，判断 input 的 function 是好或者多不好。
 Loss function 可以随自己的意愿定义一个合理的 function，这个是用比较常见的做法。
 
-L(f) = L(w,b) = (y^n - (b + w*xcpn))2
+L(f) = L(w,b) = ∑(y^n - (b + w*xcpn))2
 	y^n: 真实的数值
 	b + w*xcpn: 预测的数值
 	
