@@ -34,4 +34,7 @@ grammar_cjkRuby: true
 | vanilla | adj.  | 香草味的；普通的；寻常的 |
 | contradiction | n.  | 矛盾，对立，反驳 |
 | stochastic | adj.  | 随机的；机会的；有可能的；随便的 |
+| multivariable | adj.  | 多变量的 |
+|  | adj.  |  |
+|  | adj.  |  |
 |  | adj.  |  |
