@@ -31,3 +31,7 @@ grammar_cjkRuby: true
 | trade-off | n.  | 权衡，协调 |
 | baseline | n.  | 底线；基础；起点 |
 | validation | n.  | 生效；批准；验证；核实 |
+| vanilla | adj.  | 香草味的；普通的；寻常的 |
+| contradiction | n.  | 矛盾，对立，反驳 |
+| stochastic | adj.  | 随机的；机会的；有可能的；随便的 |
+|  | adj.  |  |
