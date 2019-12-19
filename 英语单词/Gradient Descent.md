@@ -35,6 +35,6 @@ grammar_cjkRuby: true
 | contradiction | n.  | 矛盾，对立，反驳 |
 | stochastic | adj.  | 随机的；机会的；有可能的；随便的 |
 | multivariable | adj.  | 多变量的 |
-|  | adj.  |  |
-|  | adj.  |  |
-|  | adj.  |  |
+| constant | adj. / n.  | 连续发生的；不断的；重复的；不变的 / 常数；常量 |
+| derivation | n.  | 起源，由来，派生 |
+| formal derivation |  | 形式推导 |
