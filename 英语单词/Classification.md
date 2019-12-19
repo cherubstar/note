@@ -16,10 +16,20 @@ grammar_cjkRuby: true
 | resistance | n.  | 反对；抵制；抗拒；抵抗 |
 | determine | v.  | 查明；测定；决定；形成；影响 |
 | binary classification | n.  | 二进制分类 |
-|  | n.  |  |
-|  | n.  |  |
-|  | n.  |  |
-|  | n.  |  |
+| perceptron | n.  | 感知器 |
+| generative | adj.  | 有生产力的；能生产的 |
+| probability | n.  | 可能性；概率；几率 |
+| vector | n.  | 矢量；向量 |
+| gaussian distribution | n.  | 高斯分布；高斯分配；正态分布 |
+| covariance | n.  | 协方差；协变性 |
+| matrix | n.  | 矩阵 |
+| assume | v.  | 假定；假设；认为；承担；呈现 |
+| maximum Likelihood | n.  | 最大似然法；最大似然分类 |
+| accuracy | n.  | 准确；精确 |
+| boundary | n.  | 边界；界限；分界线 |
+| probability distribution | n.  | 概率分布 |
+| Naive Bayes Classifier | n.  | 贝叶斯分类器；朴素贝叶斯分类 |
+| posterior probability | n.  | 后验概率；验后概率；事后概率；事后机率 |
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
