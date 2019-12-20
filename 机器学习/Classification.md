@@ -96,3 +96,13 @@ sigmod 函数的来源
 ```
 >**Warning of Math**
 
+```
+计算 z 的结果
+```
+![](./images/1576853049960.png)
+![](./images/1576853071818.png)
+![](./images/1576853098926.png)
+![](./images/1576853151970.png)
+```
+这个计算过程，当 ∑ 相同时，boundary 是 linear 的
+```
