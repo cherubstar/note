@@ -42,7 +42,7 @@ Classification 的应用
 ```
 >**如何寻找 μ 和 ∑**
 ```
-利用 Maximum Likelihood 这个概念
+利用 Maximum Likelihood（最大似然估计） 这个概念
 ```
 ![](./images/1576846119287.png)
 
