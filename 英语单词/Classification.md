@@ -6,6 +6,7 @@ grammar_cjkRuby: true
 
 | 单词 | 词性 | 词义  |
 | ---------- | --- | --- |
+| prior | adj.  | 先前的；较早的；在前的；优先的 |
 | financial | adj.  | 财政的；财务的；金融的；有钱的 |
 | symptoms | n.  | 症状；征兆 |
 | recognition | n.  | 认出；识别；承认；认可；赏识 |
@@ -30,6 +31,6 @@ grammar_cjkRuby: true
 | probability distribution | n.  | 概率分布 |
 | Naive Bayes Classifier | n.  | 贝叶斯分类器；朴素贝叶斯分类 |
 | posterior probability | n.  | 后验概率；验后概率；事后概率；事后机率 |
-|  | n.  |  |
-|  | n.  |  |
-|  | n.  |  |
+| likelihood | n.  | 可能；可能性 |
+| evaluate | v.  | 估计，评价，评估 |
+| posterior | adj.  | 后面的，在后部的 |
