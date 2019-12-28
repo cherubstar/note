@@ -38,7 +38,7 @@ grammar_cjkRuby: true
 ```
 ![](./images/1577516389798.png)
 ```
-整个 network 需要一组 input,对每一个 Layer1 的 neuron 来说，每个 neuron 就是 input layer 的每一个 dimension。
+整个 network 需要一组 input,对每一个 Layer 1 的 neuron 来说，每个 neuron 就是 input layer 的每一个 dimension。
 ```
 
 >**Deep 的定义**
@@ -49,7 +49,6 @@ grammar_cjkRuby: true
 Residual Network 不是一般的 Fully Connect Feedforward Netword。
 ```
 ![](./images/1577517492613.png)
-![](./images/1577517393038.png)
 ```
 使用 matrix（矩阵） 计算
 ```
