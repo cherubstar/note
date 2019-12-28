@@ -101,6 +101,9 @@ input 这个 image，通过 Neural network，得到一个 output，记为 y
 ![](./images/1577521980952.png)
 ![](./images/1577522079282.png)
 ![](./images/1577522114471.png)
+```
+利用 Gradient Descent 来找 w 的值。
+```
 
 > **计算微分的框架**
 
