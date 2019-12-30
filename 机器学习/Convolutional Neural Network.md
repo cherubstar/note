@@ -143,3 +143,40 @@ MaxPooling2D(2,2): 2x2 中选取最大的
 把 positive 值调大，把 negative(passive) 值调小。
 让 CNN 夸大化它看到的东西。强化它看到的东西，那它就会看到另类的东西。
 ```
+### Deep Style
+
+![](./images/1577721480185.png)
+![](./images/1577721498871.png)
+![](./images/1577722037883.png)
+```
+让一张图有另外一种图的风格。
+把原图丢给 CNN，得到 filter 的 output，CNN filter 的 output 代表这张 image 里面有什么样的 content。
+把‘呐喊’这张图丢到 CNN 中，得到 image 的 output 的 filter 之间的 correlation。
+用同一个 CNN 找一个 image，它的 content 像左边那张，它的 style 像右边这张。
+```
+
+### 什么时候该用 CNN
+
+![](./images/1577722468391.png)
+```
+需要有 image 该有的特性，CNN 处理 image 时特别有效。
+Alpha Go 是有 image 特性的。
+对棋盘不能使用 Max Pooling。
+```
+![](./images/1577724138071.png)
+```
+Alpha Go 没有用 Max Pooling
+```
+
+### More Application
+![](./images/1577724585241.png)
+![](./images/1577724858229.png)
+```
+Speech: 声音
+Text: 文字处理
+```
+### To learn more
+
+![](./images/1577724913861.png)
+
+![](./images/1577724956266.png)
