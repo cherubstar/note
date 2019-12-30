@@ -17,4 +17,11 @@ grammar_cjkRuby: true
 | performance | n.  | 表演；演出；演技；性能；业绩 |
 | false alarm | n.  | 假警报，虚警 |
 | development set | n.  | 开发集 |
+| hyper parameter | n.  | 超参数 |
+| troll | n.  | 拖钓；搜查；搜索 |
+| feature vector | n.  | 特征向量 |
+| probability density | n.  | 概率密度 |
+|  | n.  |  |
+|  | n.  |  |
+|  | n.  |  |
 |  | n.  |  |
