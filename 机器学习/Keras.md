@@ -45,8 +45,6 @@ loss="crossentropy"
 ```
 x_train: numpy array 是 two dimension 的，是一个 two dimension 的 matrix，它的第一个 dimension 代表多少个 example，第二个 dimension 表示 image 有多少个的 pixel，就代表 image 有多大。
 y_train: 第一个 dimension 表示有几个 training example，有多少个 example 就有多少维，第二个 dimension 是 10，因为 output 是 10 维的，Label 是有 10 个可能。
-batch_size: 
-nb_epoch: 
 ```
 
 ![](./images/1577807825607.png)
@@ -60,4 +58,26 @@ nb_epoch:
 	- 直到把所有的 batch 通通选过一次
 把每一个 batch 看过以后，就叫做 one epoch，重复以上的 process，可能需要好几十个 epoch。
 ```
+
+![](./images/1577811518331.png)
+```
+batch_size: 是将 100 个 examples 放入一个 batch。
+nb_epoch: 每个 batch finish 一次，就是一个 epoch。在一个 epoch update 很多次参数了，给一个 batch 就 update 一次参数。
+```
+
+![](./images/1577812131525.png)
+```
+最主要使用 Mini-batch 的理由，是实做上。
+平行运算
+batch size 不能设置太大，deep learning 的时候，会卡住。
+```
+
+![](./images/1577812389545.png)
+```
+当有 batch 的时候，GPU 是怎么平行计算的？
+运算理论上是一样多的。
+下面比较快。
+```
+
+![](./images/1577812449718.png)
 
