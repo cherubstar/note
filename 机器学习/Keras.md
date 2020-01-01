@@ -5,6 +5,9 @@ grammar_cjkRuby: true
 ---
 
 ![](./images/1577803727619.png)
+[theano 视频1](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2015_2/Lecture/Theano%20DNN.ecm.mp4/index.html)
+
+[theano 视频2](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2015_2/Lecture/RNN%20training%20(v6).ecm.mp4/index.html)
 ```
 Keras 是 TensorFlow 和 theano 的接口。
 ```
@@ -62,7 +65,7 @@ y_train: 第一个 dimension 表示有几个 training example，有多少个 exa
 ![](./images/1577811518331.png)
 ```
 batch_size: 是将 100 个 examples 放入一个 batch。
-nb_epoch: 每个 batch finish 一次，就是一个 epoch。在一个 epoch update 很多次参数了，给一个 batch 就 update 一次参数。
+nb_epoch: 当所有的 batch finish 一次后，就是一个 epoch。在一个 epoch update 很多次参数了，给一个 batch 就 update 一次参数。
 ```
 
 ![](./images/1577812131525.png)
