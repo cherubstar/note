@@ -98,7 +98,7 @@ output layer: 定义 neuron 的数量，activation = 'softmax'
 ```
 Step 2:
 定义一个 Loss Function，loss = 'categoriacl_crossentropy'，opimizer = 'adam'
-开始 train 这个 network
+开始 train 这个 network，如果是 10 dimension 的，只有一个维是 1，其他维都是 0。
 ```
 
 ![](./images/1577847846193.png)
