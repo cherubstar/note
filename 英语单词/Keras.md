@@ -9,7 +9,7 @@ grammar_cjkRuby: true
 | flexible | adj.  | 灵活的；可变动的；有弹性的 |
 | toolkit | n.  | 工具箱；工具包；软件包 |
 | optimizer | n.  | 优化器 |
-|  | n.  |  |
+| backend | n.  | 后端；后台 |
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
