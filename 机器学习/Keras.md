@@ -46,7 +46,7 @@ loss="crossentropy"
 
 ![](./images/1577807053930.png)
 ```
-x_train: numpy array 是 two dimension 的，是一个 two dimension 的 matrix，它的第一个 dimension 代表多少个 example，第二个 dimension 表示 image 有多少个的 pixel，就代表 image 有多大。
+x_train: numpy array 是 two dimension 的，是一个 two dimension 的 matrix，它的第一个 dimension 代表多少个 example，第二个 dimension 表示 image 有多少个的 pixel 比如（28 x 28 = 784）pixel，就代表 image 有多大。
 y_train: 第一个 dimension 表示有几个 training example，有多少个 example 就有多少维，第二个 dimension 是 10，因为 output 是 10 维的，Label 是有 10 个可能。
 ```
 
@@ -84,3 +84,26 @@ batch size 不能设置太大，deep learning 的时候，会卡住。
 
 ![](./images/1577812449718.png)
 
+-----------------------------------------------------------------------------------------
+
+![](./images/1577847103679.png)
+```
+Step 1: 
+定义一个 model
+input layer: 定义 input_dim，neuron 的数量，activation = 'relu'
+hidden layer: 定义 neuron 的数量，activation = 'relu'
+output layer: 定义 neuron 的数量，activation = 'softmax'
+```
+![](./images/1577847584954.png)
+```
+Step 2:
+定义一个 Loss Function，loss = 'categoriacl_crossentropy'，opimizer = 'adam'
+开始 train 这个 network
+```
+
+![](./images/1577847846193.png)
+```
+使用
+case 1: evaluate 出 model 的正确率，有两个 dimension，一个是 loss，另一个是 accuracy。不同的方式，loss 和 accuracy 都是不一样的。
+case 2: predict 的结果
+```
