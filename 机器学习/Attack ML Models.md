@@ -68,3 +68,46 @@ L-infinity:
 ```
 不同杂讯带来不同的结果。
 ```
+
+>**Attack Approaches**
+
+![](./images/1577926235369.png)
+```
+FGSM
+```
+
+![](./images/1577928319311.png)
+```
+x* = x0 - ε△x
+先把 x 对 L 的 Gradient 算出来，然后把 Gradient 中的每一个 dimension拿出来，如果这个 dimension 是正的，视为 +1，如果是负的，视为 -1。
+先算出来 Gradient 的方向，如果不是用 FGSM，而是用一般的 Gradient descent，是把 -Gradient descent * learning rate 去 update x0 就得到 x1，FGSM 只需要做一次 update，这个 function 并不在意 gradient 的值，而是在意 gradient 的方向。
+```
+
+![](./images/1577928538797.png)
+```
+原理: 其实是设定了一个很大的 learning rate，这样就可以一次 update 就达到 Attack 这件事。如果 learning rate 设置特别大，得到的 x1 超出了这个范围，就需要把 x1 拉回来，拉到右上角。
+```
+
+>**Black Box Attack**
+
+![](./images/1577929020411.png)
+![](./images/1577929181773.png)
+```
+如果有了 target network 的 training data，就可以自己训练一个 Network Proxy，自己攻击自己训练的 model，如果攻击成功，往往就可以将 target network 攻破。
+```
+
+![](./images/1577932043737.png)
+```
+Attack 可以是 Universal 的，找到一个 Attack signal 加到 database 里面所有 image 上，多数时候都可以让 database 里面的 image 辨识错误。
+```
+
+![](./images/1577932415145.png)
+```
+一个 network 本来要做的是 A 任务，但是让这个 network 看了一些杂讯，network 就‘发狂’了，解的是 B 任务。
+有一个影像辨识的 model，这个 model 可以数我们输入图片中有几个方块，将数方块这个图片放在杂讯上，就可以实现数方块的任务。
+```
+
+![](./images/1577933377634.png)
+```
+可以攻击 audio、text...
+```
