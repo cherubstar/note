@@ -111,3 +111,43 @@ Attack 可以是 Universal 的，找到一个 Attack signal 加到 database 里�
 ```
 可以攻击 audio、text...
 ```
+
+### Defense
+
+![](./images/1577933803409.png)
+```
+Passive defense: 另外加一层防护罩帮它阻挡攻击。
+Proactive defense: 训练 model 的时候，就把防御加到训练 model 的过程中。
+```
+
+>**Passive Defense**
+
+![](./images/1577934798353.png)
+![](./images/1577934909554.png)
+```
+filter 就是一个防护罩，一般的图片通过 filter，不作为，杂讯通过 filter，希望它的伤害就会减轻。eg: Smoothing
+filter 上加上 Smoothing 并不会伤害原来的图片，所以仍然可以得到正确的结果。
+```
+
+![](./images/1577935390849.png)
+```
+输入一张 image
+原封不动的做 Prediction0
+经过 Squeezer1 得到 Prediction1
+经过 Squeezer2 得到 Prediction2
+有做 Squeezer 前后相差很大，就可以知道这张图片可能被攻击过。
+```
+
+![](./images/1577935539427.png)
+```
+类似
+```
+
+>**Proactive Defense**
+
+![](./images/1577937013918.png)
+```
+在训练 network 的时候，将漏洞找出来，
+找出漏洞，再组成新的 training data，把这些 x~ 标上和原来一样的 label，把这些新的 data 进行训练。
+但是如果使用 algorithm A 做防护，虽然可以抵挡 A 攻击，但不一定能抵挡 B 攻击。
+```
