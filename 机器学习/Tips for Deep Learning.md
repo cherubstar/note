@@ -244,7 +244,7 @@ Maxout 和 MaxPooling 是一样的做法，只是换了一个不同的说法。
 2、
 ```
 
-
+![](./images/1578131920287.png)
 ![](./images/1578130902451.png)
 ```
 在 Training 的时候使用 dropout，会有一半被丢弃，所以在 Testing 的时候，需要减去一半的 percent。
