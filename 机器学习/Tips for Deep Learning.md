@@ -17,7 +17,7 @@ grammar_cjkRuby: true
 
 ![](./images/1578065798003.png)
 ```
-不同的方法对应不同的症状。
+对于 Training Data 和 Testing Data 有不同方法来使得 Loss Function 更小。
 ```
 
 ![](./images/1578066522713.png)
@@ -32,7 +32,7 @@ grammar_cjkRuby: true
 ```
 某一个参数 w 对 total Cross 的偏微分，意思是说，当对某一个参数 w 做一个小小的变化的时候，它对 Cross 的影响是怎么样，以此来决定说这个参数 w 它的 Gradient 的值有多大。
 在第一个 layer 中的某一个参数加上 Δw，看看 Neural Network 的 Output 对 Target 的 loss 有什么样的影响。
-如果加上的 Δw 很大，通过 sigmod function 的时候，这个 output 是会变小的，也就是说改变了一个参数的 weight，对某一个 neuron 的 output 的值有影响，但是影响是会衰减的，比如用的是 sigmod function，sigmod function 会把(-∞, +∞)的值硬压到(0, 1)之间。
+如果加上的 Δw 很大，通过 sigmod function 的时候，这个 output 的值增大的趋势是会变小的，也就是说改变了一个参数的 weight，对某一个 neuron 的 output 的值有影响，但是影响是会衰减的，比如用的是 sigmod function，sigmod function 会把(-∞, +∞)的值硬压到(0, 1)之间。
 如果有很大的 input 变化，通过 sigmod function 之后，它的 output 变化会是很小的，每通过一次 sigmod function，output 就衰减一次，所以当 network 越深，它的衰减次数就越多，直到最后它对 output 的影响是很小的，因此最后对 Cross 的影响是很小的，因此就造成靠近 input 的那些 weight，它的 gradient 的值是小的。
 ```
 
