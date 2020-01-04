@@ -61,6 +61,7 @@ activation function 作用在两个不同的 region，一个 output 是 0，另�
 就不会有 Vanishing Gradient Problem。
 ```
 
+![](./images/1578150177441.png)
 >**Leaky ReLU**
 
 ```
