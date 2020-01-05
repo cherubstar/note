@@ -14,7 +14,7 @@ grammar_cjkRuby: true
 		xhp: 生命值
 		xw: 重量
 		xh: 身高
-	y: output 是进化后的 cp 值，是一个数值，是一个scalar
+	y: output 是进化后的 cp 值，是一个数值，是一个scalar(标量)
 ```
 >**做 machine learning 需要三个步骤**
 
