@@ -180,7 +180,7 @@ Linear model
 ![](./images/1576591122650.png)
 ```
 原来的 Loss function 只考虑了 error，
-Regularization = Loss Function + λ*∑(wi)2		-	λ是一个常数
+Regularization = Loss Function + λ*∑(wi)2	-	λ是一个常数
 当加上 λ*∑(wi)2 这一项时，参数值比较接近于 0 的 function，它是比较平滑的。
 平滑: 当输入有变化的时候，output 对输入的变化是比较不敏感的。
 
