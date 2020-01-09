@@ -36,7 +36,7 @@ grammar_cjkRuby: true
 如果有很大的 input 变化，通过 sigmod function 之后，它的 output 变化会是很小的，每通过一次 sigmod function，output 就衰减一次，所以当 network 越深，它的衰减次数就越多，直到最后它对 output 的影响是很小的，因此最后对 Cross 的影响是很小的，因此就造成靠近 input 的那些 weight，它的 gradient 的值是小的。
 ```
 
-### ReLU
+### New activation function
 
 ![](./images/1578105416000.png)
 ```
