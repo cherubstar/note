@@ -241,6 +241,8 @@ Maxout 和 MaxPooling 是一样的做法，只是换了一个不同的说法。
 
 ![](./images/1578130552620.png)
 ```
+如果在 Training data 上的 performance 不好，就不要加 dropout，不然只会越弄越差。
+如果在 Training data 上跑的太好，，而 Testing data 上不好，发生了 overfitting，才会使用 dropout。
 1、在 Testing 的时候，不做 dropout。
 2、
 ```
