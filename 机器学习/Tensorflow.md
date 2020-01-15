@@ -49,3 +49,16 @@ grammar_cjkRuby: true
 为什么 Dropout 有效？
 ```
 
+>**访问 Tensorboard 界面**
+>**tensorboard --logdir=callbacks**
+
+![](./images/1579007088641.png)
+
+>**127.0.0.1:6006**
+
+![](./images/1579007156239.png)
+
+>**Wide & Deep 模型**
+
+[Wide & Deep 模型](https://arxiv.org/pdf/1606.07792v1.pdf)
+
