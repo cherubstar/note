@@ -183,3 +183,126 @@ xt 乘以 4 个不同的 transform 得到 4 个不同的 vector，这 4 个 dime
 ```
 Keras 支持三种 RNN，LSTM、GRU、SimpleRNN。
 ```
+
+>**在 RNN 中定义 Loss Function**
+
+![](./images/1579153595229.png)
+```
+把 arrive 丢到 RNN 中去，会得到一个 output y1，y1 会和 reference vector 计算 cross entropy。在做 training 时候，不能把 word sequence 打散，而是当成一个整体来看。
+Loss Function = Cross Entropy 之和
+```
+
+![](./images/1579154252042.png)
+```
+RNN 是可以用 Gradient Descent 训练的。
+```
+
+![](./images/1579154451503.png)
+![](./images/1579156161219.png)
+```
+RNN 不是那么容易被 train 的。
+RNN 的 error surface，total loss 对参数的变化是非常陡峭的。有一些地方非常平坦，有一些地方非常陡峭。
+图上显示的是 w1，w2 对 total loss 的影响。
+activation function 不是这个问题的关键点。
+```
+
+![](./images/1579155515821.png)
+```
+RNN 在 train 的时候有问题。
+当输入[1,0,0,0,0...] 的时候。改变 w 的之后，对 network 的 output 有多大影响。
+w 有小小的变化，output 就会有很大的影响。
+当 gradient 很大的时候，learning rate 设置小一点。
+当 gradient 很小的时候，learning rate 设置大一点。
+
+RNN 为什么会有问题？
+RNN 的 training 问题来自于它把同样的东西在 transozaton 的时候，在时间和时间转换的时候，反复使用，在 neuron 接到 memeory 的那一组 weight，不同的时间点都是被反复使用的。所以 w 一有变化， 它有可能没有造成任何影响，如果可以造成影响，影响是天崩地裂的。RNN 不好训练的原因并不是来自于 activation，而是同样的 weight 在不同的时间点被重复使用。
+```
+
+>**解决这个问题的技巧**
+
+![](./images/1579163030443.png)
+```
+LSTM 可以把一些平坦的地方拿掉。
+LSTM 可以解决 Gradient Vanishing 的问题，但不能解决 Gradient Explode。
+
+面试会问？
+为什么 把 RNN 换成 LSTM？
+因为 LSTM 可以 handle Gradient Vanishing 的问题。
+LSTM 的 memory 是相加的，会一直存在。
+RNN 中的每个时间点都会被 forget 掉。
+```
+
+![](./images/1579163249578.png)
+```
+其他可以解决 Gradient Vanishing，
+Clockwise RNN
+Structurally Constrained Recurrent Network(SCRN)
+```
+
+>**More Applications**
+
+![](./images/1579163693884.png)
+```
+1、input 一个 vector sequence，output 一个 vector。
+把最后一个 hidden layer 通过几个 transform 就得到最后的 axis。最后是一个分类问题，可以用 RNN 处理这个问题。
+```
+
+![](./images/1579164237216.png)
+```
+2、Key Term Extraction：
+```
+
+![](./images/1579164501136.png)
+![](./images/1579164595358.png)
+![](./images/1579164827394.png)
+```
+More to More
+当 output 比 input 短的时候。
+e.g:语音辨识
+CTC: 使用 extra symbol Φ，解决叠字的问题。
+```
+![](./images/1579164963504.png)
+```
+将中间的 Φ 去掉，再拼接。
+```
+
+![](./images/1579165334772.png)
+```
+Sequence to Sequence learning: 不确定 input 和 output 谁长谁短。
+e.g: Machine Translation，将 input 英文 word sequence 翻译成 中文的 character sequence。
+memory 里面就存了所有 input 的 sequence 的 information。
+```
+
+![](./images/1579165529658.png)
+![](./images/1579167271501.png)
+```
+就开始 output character sequence。Machinie Learning 不可能 output 所有可能，它还有一个可能的 output 是 "==="(断)
+```
+
+![](./images/1579167731529.png)
+```
+e.g: Syntactic parsing
+```
+![](./images/1579167810817.png)
+```
+有相同的词汇，但是 word 的 order 不同，有不一样的结果。
+```
+![](./images/1579167971318.png)
+```
+把一个 document 变成一个 vector，Input a Sequence：
+Mary was hungry.she didn't find any food.
+通过一个 RNN 变成一个 invalid vector，再把这个 invalid vector 当作 Decode 的输入，让这个 Decode 找回一个一摸一样的句子。
+Sequence-to-Sequence Auto-encoder 还有另一个版本，sigsor。
+如果使用 Sequence-to-Sequence Auto-encoder，input 和 output 都是同一个句子。得到的 code 比较容易表达文法的意思。
+如果使用 sigsor，output target 会是下一个句子。得到的 code 比较容易表达语义的意思。
+```
+![](./images/1579168664530.png)
+```
+每一个句子都可以得到一个 vector，
+Mary was hungry 得到一个 vector1，
+she didn't find any food 得到一个 vector2，
+再把这两个 vector1、vector2 加起来，变成一个整个 high label vector，
+再将整个 high label vector 产生一串 sentence vector，
+再根据每一个 sentence vector 解回 word sequence。
+这是一个 4 层的 LSTM。
+```
