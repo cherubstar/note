@@ -385,8 +385,32 @@ Mechine 了解了 Question 和 Audio Story 语义之后，再做 Attention，决
 >**RNN v.s. Structured Learning**
 
 ![](./images/1579179676429.png)
+
+>**Integrated Together**
+
 ![](./images/1579179979147.png)
 ```
 DL(Deep Learning) 和 SL(Structured Learning) 是可以结合起来
 input feature 可以先通过 RNN、LSTM，然后 RNN、LSTM 的 output 作为 HMM、CRF、Structured Perception/SVM 的 input，
 ```
+
+![](./images/1579181262163.png)
+```
+在语音识别上，会把 DL 和 SL 结合起来
+常常见到的组合是：CNN/LSTM/DNN + HMM
+x: 声音讯号
+y: 语音辨识结果
+```
+![](./images/1579181394100.png)
+
+>**Is Structured Learning pratical?**
+
+![](./images/1579181632162.png)
+![](./images/1579181776833.png)
+![](./images/1579181869145.png)
+
+>**DeepLearningBook**
+
+**[DeepLearningBook](https://www.deeplearningbook.org/)**
+
+![](./images/1579182030376.png)
