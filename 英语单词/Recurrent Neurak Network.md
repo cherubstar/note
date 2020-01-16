@@ -23,7 +23,7 @@ grammar_cjkRuby: true
 | invalid vector | n.  | 无效向量 |
 | audio segments | n.  | 音频段 |
 | segment | n. / v. | 部分；片；段 / 分割；划分| 
-|  | n.  |  |
+| semantic | adj.  | 语义的 |
 |  | n.  |  | 
 |  | n.  |  | 
 |  | n.  |  | 
