@@ -283,6 +283,8 @@ memory 里面就存了所有 input 的 sequence 的 information。
 ```
 e.g: Syntactic parsing
 ```
+>**Sequence-to-Sequence Auto-encoder - Text**
+
 ![](./images/1579167810817.png)
 ```
 有相同的词汇，但是 word 的 order 不同，有不一样的结果。
@@ -305,4 +307,86 @@ she didn't find any food 得到一个 vector2，
 再将整个 high label vector 产生一串 sentence vector，
 再根据每一个 sentence vector 解回 word sequence。
 这是一个 4 层的 LSTM。
+```
+>**Sequence-to-Sequence Auto-encoder - Speech**
+
+![](./images/1579175297233.png)
+![](./images/1579175513246.png)
+```
+Sequence-to-Sequence Auto-encoder - Speech
+可以把 audio segments(word-level) -> Fixed-length vector
+用途：可以做语音的搜索
+把一个 audio database 做 segmentation，切成一段一段的，每一段用 Audio Segment to vector 变成 vector1。
+输入一个 Spoken Query，通过 Audio Segment to vector 也变成 vector2，然后计算 vector1 和 vector2 的相似程度。得到搜寻的结果。
+```
+![](./images/1579175900634.png)
+![](./images/1579176459142.png)
+```
+把一段 audio segment 抽成 acoustic features，把它放到 RNN 中去，RNN 就是一个 encoder，最后一个时间点存在 memory 中的值就代表了 input 的声音讯号的 information，memory 的值就是 vector 是我们拿来表示一整段声音讯号的 vector。
+但是只有 RNN Encoder，我们没办法 train，同时我们需要 train 一个 RNN Decoder，它把 encoder 存在 memory 中的值当成 input，产生一个 acoustic features sequence(声学特征序列)，希望 y1 和 x1 越接近越好。
+```
+![](./images/1579176774096.png)
+
+>**Demo: Chat-bot**
+
+![](./images/1579176936091.png)
+![](./images/1579176950945.png)
+```
+做一个聊天机器人，收集大量对话。
+```
+
+>**Attention-based Model**
+
+![](./images/1579177070057.png)
+```
+RNN 的进阶版本：Attention-based Model
+```
+![](./images/1579177142705.png)
+```
+Attention-based Model
+```
+![](./images/1579177263051.png)
+```
+Attention-based Model v2
+不仅可以读，还可以写。
+```
+
+![](./images/1579177818084.png)
+![](./images/1579177843785.png)
+```
+做 Read Comprehension
+读取的时候不止在同一个地方读，把每个读过的地方 connect 起来，会给出一个最终的答案。
+```
+
+>**Visual Question Answering**
+
+![](./images/1579178405864.png)
+![](./images/1579178652796.png)
+```
+一张图通过 CNN 来使得图片上的每一小块 region 用 vector 表示
+输入一个 Query，Query 被丢入中央处理器中，中央处理器操控一个 Reading Head Controller，Reading Head Controller 决定着它要读取的位置，看看图片的什么位置是和输入的 Query 有关，读取需要好几个步骤
+```
+
+>**Speech Question Answering**
+
+![](./images/1579178749601.png)
+![](./images/1579179111685.png)
+```
+语音处理，做听力测验
+先让 Mechine 读一下 Question，把 Question 做语义分析得到 Question 的语义。
+声音的部分（Audio Story）先用语音辨识把它转成文字，再把文字做语义分析得到这段问题的语义。
+Mechine 了解了 Question 和 Audio Story 语义之后，再做 Attention，决定它在 Audio Story 中哪些部分是和回答问题有关。
+```
+
+>**To Learn More**
+
+![](./images/1579179289243.png)
+
+>**RNN v.s. Structured Learning**
+
+![](./images/1579179676429.png)
+![](./images/1579179979147.png)
+```
+DL(Deep Learning) 和 SL(Structured Learning) 是可以结合起来
+input feature 可以先通过 RNN、LSTM，然后 RNN、LSTM 的 output 作为 HMM、CRF、Structured Perception/SVM 的 input，
 ```
