@@ -47,6 +47,8 @@ grammar_cjkRuby: true
 ```
 思考问题
 为什么 Dropout 有效？
+1、selu 这个激活函数的实现方式？
+2、Dropout 的实现方式？
 ```
 
 >**访问 Tensorboard 界面**
@@ -62,3 +64,41 @@ grammar_cjkRuby: true
 
 [Wide & Deep 模型](https://arxiv.org/pdf/1606.07792v1.pdf)
 
+![](./images/1579237533292.png)
+![](./images/1579237691122.png)
+![](./images/1579237736197.png)
+```
+稀疏特征
+	离散值特征：比如性别。就是从 n 个值中选择一个。
+	One-hot 编码表示
+	叉乘：在图片中的专业中的每一个字段和词表中的每一个字段进行组合。
+叉乘是可以刻画一个样本的。假设一个物体的所有特征都表示成离散特征，就可以用叉乘的方式精确的刻画一个样本，用叉乘的方式可以精确的刻画到所有样本的所有可能性。
+```
+![](./images/1579237927339.png)
+![](./images/1579237962200.png)
+```
+密集特征：就是用向量表达的特征
+	向量表达：每个词都是用向量来表达的，因而可以用向量之间的距离来表达这两个词对应的距离。通过向量之间的差距来衡量信息之间的差距。
+```
+
+>**Wide & Deep vs. Wide 模型结构**
+
+![](./images/1579238027692.png)
+![](./images/1579238346267.png)
+```
+Wide Models
+	输入都是稀疏特征，也是 One-hot 编码表达，One-hot 表达的每一个分量都直接连接到输出单元上。
+Wide & Deep Models
+	左半部分是 Wide Models，右半部分是 Deep Models，对于输入的数据先把它表示成一个密集的向量表达。
+	Sparse Features: 稀疏特征
+	Dense Embedding: 密集特征
+	Hidden Layers: 隐藏层
+	Output Units: 输出单元
+Deep Models
+	和 Wide & Deep Models 层次是一样的，只不过 Deep Models 上缺少 Wide Models 的机制。
+```
+![](./images/1579238433076.png)
+```
+模型图
+```
+![](./images/1579238459307.png)
