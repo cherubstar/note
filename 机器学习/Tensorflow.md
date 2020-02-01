@@ -127,3 +127,12 @@ Deep Models
 ```
 
 ![](./images/1579267433846.png)
+
+>**tf.data API**
+
+![](./images/1580397787628.png)
+
+>**API 列表**
+
+![](./images/1580397860887.png)
+![](./images/1580397901797.png)
