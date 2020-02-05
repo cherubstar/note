@@ -118,3 +118,25 @@ d1 = (1 - ε1)/ε1 的开方，因为 ε1 < 0.5，所以 d1 > 1。
 >**Warning of Math**
 
 ![](./images/1580914487803.png)
+![](./images/1580915190131.png)
+![](./images/1580915764147.png)
+![](./images/1580916041790.png)
+![](./images/1580916493128.png)
+![](./images/1580916665428.png)
+
+```
+Adaboost + Decision Tree
+```
+![](./images/1580916802855.png)
+
+### Gradient Boosting
+
+![](./images/1580917088905.png)
+![](./images/1580917478487.png)
+![](./images/1580917608348.png)
+![](./images/1580917800304.png)
+
+### Stacking
+
+![](./images/1580917921505.png)
+![](./images/1580918093514.png)
