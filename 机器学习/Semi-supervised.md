@@ -26,19 +26,30 @@ Why semi-supervised learning?
 >**Supervised Generativee Model**
 
 ![](./images/1580981845416.png)
+```
+假如都是 Gaussion 分布
+Class1 是由 μ1，Σ 估测出来的
+Class2 是由 μ2，Σ 估测出来的
+就可以估测一个新的 data 属于 C1 的 posterior probility，就可以决定 Boundary 的位置在哪。
+```
 
 >**Semi-supervised Generativee Model**
 
 ![](./images/1580982107065.png)
-
 ```
-两个 label data 是一样多的，但 class2 的 data 是比较多的，所以 class2 的 paramerter proobability 是比较大的。。
+绿色的是 unlabel data，两个 label data 是一样多的，但 class2 的 data 是比较多的，所以 class2 的 paramerter probability 是比较大的。。
 ```
 ![](./images/1580983020618.png)
+```
+1、先初始化一组参数 θ = {P(C1), P(C2), μ1，μ2，Σ}
+2、根据现有的 θ 估算每一笔 unlabel data 属于 Class1 的 posterior probability
+3、计算出几率以后，就可以 update model
+	- 如果不考虑 unlabel data，P(C1) = N1/N，μ1 的计算结果是所有属于 C1 的 label data 都平均起来。
+	- 如果考虑 unlabel data，C1 出现的次数是所有 unlabel data 是 C1 的posterior probability 的和，μ1 的计算结果是 unlabell data 的每一笔 data xu 根据它的 posterior probability 做 ...，再除掉所有 weight 的和。
+4、update 几率。
+```
 ![](./images/1580983537664.png)
-```
 
-```
 
 #### Semi-supervised Learning Low-density Separation
 
@@ -47,9 +58,17 @@ Why semi-supervised learning?
 >**Self-Training**
 
 ![](./images/1580984431173.png)
+```
+有 label data 和 unlabel data
+先用 label data train 一个 model，叫做 f*。(方法有 Neoron Network，其他 ML 等)
+根据 f* 去 label 这些 unlabelled data，做法就是把 xu 放入 model f* 中，看 output data。
+将一些 unlabelled data 放入 labeled data 中。
+labeled data 从 unlabelled data 得到额外的 labeled data，再去 train model f*。
+```
 ![](./images/1580985232637.png)
 ```
-
+做 Self-training 的时候，用的是 Hard label
+做 generative model 的时候，用的是 Soft label
 ```
 >**Entropy-based Regularization**
 
@@ -84,3 +103,27 @@ Classify astronomy vs. travel articles
 绿色: Class 2
 蓝色：unlabelled data
 ```
+>**Graph-based Approach**
+
+![](./images/1580996933500.png)
+![](./images/1580997488003.png)
+```
+
+```
+
+![](./images/1580997768289.png)
+![](./images/1580997929663.png)
+
+![](./images/1580998252339.png)
+![](./images/1580998575939.png)
+```
+S 越小，越 smooth。
+y: 是一个 (R+U) dim 的 vector
+L = D - W	Graph Laplacian
+```
+![](./images/1580999116599.png)
+
+#### Semi-supervised Learning Better Representation
+
+![](./images/1580999186876.png)
+![](./images/1580999308852.png)
