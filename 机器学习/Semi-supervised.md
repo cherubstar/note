@@ -108,11 +108,14 @@ Classify astronomy vs. travel articles
 ![](./images/1580996933500.png)
 ![](./images/1580997488003.png)
 ```
-
+使用画图的方式解释 hign density path
 ```
 
 ![](./images/1580997768289.png)
 ![](./images/1580997929663.png)
+```
+labelled data 会影响相邻的 datta point。
+```
 
 ![](./images/1580998252339.png)
 ![](./images/1580998575939.png)
