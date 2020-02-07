@@ -16,8 +16,8 @@ grammar_cjkRuby: true
 | elastic | n. / adj.  | 橡皮圈(或带); 松紧带 / 有弹性的; 有弹力的; 灵活的; 可改变的; 可伸缩的 |
 | consolidation | n.  | (企业、诉讼和诉讼人的）合并；巩固，加强，联合;变坚固，变结实；充实; |
 | guard | n. / v.  | 卫兵; 警卫员; 看守; 警卫;警戒;保卫;保护 / 警卫; 守卫; 保卫; 看守; 监视 |
-|  | n.  |  |
-|  | n.  |  |
+| error surface | n.  | 误差曲面 |
+| multi-task learning | n.  | 多任务学习 |
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
