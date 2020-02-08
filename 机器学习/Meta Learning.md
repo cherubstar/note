@@ -35,12 +35,29 @@ Meta Learning: 找出一个可以生成 function 的函数 F 的能力。
 
 ![](./images/1581154410429.png)
 ```
-
+准备一组 learning algorithm，在将 Deep Learning 的时候，当定出 Neuron Network 的时候，就有了 function set，
 ```
 
 ### Defining the goodness of Learning algorithm
 
 ![](./images/1581154676461.png)
 ```
+f1、f2 表示 task1 学习出来的结果，task1、task2 的 Test data 放入 f1 中得到结果 l1、l2。
+假设有 N 个 task，每个 task 都能算出一个 loss 值，loss 值全部加起来得到L(F)，用 L(F) 来评估 Learning algorithm 好坏。
+```
+>**Meta Learning 和 Machine Learning 的区别**
 
+![](./images/1581156711983.png)
+```
+Machine Learning 需要准备 train image 和 test image。
+Meta Learning 需要准备 train task 和 test task，每一个 task 中都有 train image 和 test image。
+在 Meta Learning 中训练资料叫做 train task，测试资料叫做 test task。
+Support set		Query set
+```
+
+### pick the best Learning algorithm
+
+![](./images/1581157187732.png)
+```
+最好的 learning algorithm 就是待入这个 Loss Function，算出来最小的 leanring algorithm。
 ```
