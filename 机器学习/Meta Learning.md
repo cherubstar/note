@@ -30,3 +30,17 @@ Meta Learning: 找出一个可以生成 function 的函数 F 的能力。
 2、goodness of Learning algorithm
 3、pick the best Learning algorithm
 ```
+
+### Define a set of Learning algorithm
+
+![](./images/1581154410429.png)
+```
+
+```
+
+### Defining the goodness of Learning algorithm
+
+![](./images/1581154676461.png)
+```
+
+```
