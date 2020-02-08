@@ -61,3 +61,84 @@ Support set		Query set
 ```
 最好的 learning algorithm 就是待入这个 Loss Function，算出来最小的 leanring algorithm。
 ```
+>**Omniglot**
+
+![](./images/1581158469511.png)
+![](./images/1581158772397.png)
+```
+20 ways 1 shot：20 个 classes，每一个 classes 有 1 个 examples。
+从 train data 中 sample N 个 characters，K 个 examples。
+从 test data 中 sample N 个 characters，K 个 examples。
+```
+
+>**Techniques Today - MAML**
+
+![](./images/1581162480999.png)
+![](./images/1581162847502.png)
+```
+MAML 要做的事情是学一个最好的 initial parameter
+定义一个 Loss Function，Loss Function 的 input 就是初始化的参数，如何知道初始化的参数好或者不好，将初始化的参数放在各个不同的 task 的上面做训练，不同的 task 上面学出来的 model 是不一样的。
+θ^n 表示是在第 n 个 task 学出来的 model。
+ln(θ^n)：表示 θ^n 这一组参数最终拿去 task n 的 test set 的 loss 值。
+L(Φ)：表示 N 个 loss 值总和的 Loss Function。
+```
+
+![](./images/1581164020070.png)
+
+>**MAML vs Model Pre-training**
+
+![](./images/1581164163474.png)
+```
+虽然 Φ 本身去做 task1 和 task2 并不是很强，但是把 Φ 拿去训练以后，用 task2 的 data 训练之后可以变得很强，Φ 就是一个好的 Φ。
+```
+![](./images/1581164444819.png)
+```
+寻找一个最好的 Φ。
+```
+![](./images/1581164568568.png)
+```
+MAML: 找到一个 Φ 在任务上经过可以得到好的结果。
+Model Pre-training: 找到一个 Φ 可以在训练任务上得到好的结果。
+```
+![](./images/1581165365686.png)
+```
+假设 MAML 在 training 的时候只 update 一次，初始的 Φ 是 model 寻找出来的，计算过一次 gradient 以后，被 update 以后得到的 θ^ 就当作最终的结果。
+```
+
+>**Toy Example**
+
+![](./images/1581165822745.png)
+![](./images/1581166045122.png)
+![](./images/1581166350495.png)
+
+
+### Warning of Math
+
+![](./images/1581170031318.png)
+![](./images/1581170299261.png)
+![](./images/1581170381813.png)
+
+### Real Implementation
+
+![](./images/1581170626609.png)
+```
+MAML：初始值 Φ 有一个初始值 Φ0，每一个 task 就是一笔训练资料，update 两次参数，第二次 update 的参数更新 Φ0，Φ0 -> Φ1 移动的方向就跟第二步 gradient 算出来的方向是一样的。以此类推
+Model Pre-training：计算 task m 对 Φ0 的 gradient，根据 gradient 的方向移动。
+```
+
+>**Example - Translation**
+
+![](./images/1581170788938.png)
+```
+MAML 要比 Model Pre-training 要好。
+```
+
+### Reptile
+
+![](./images/1581171305409.png)
+![](./images/1581171506680.png)
+```
+初始值 Φ 有一个初始值 Φ0，sample a training task m，使用 Φ0 训练 task m，Reptile 没有限制 update 参数的次数，所以可以 update 很多次参数，最后找出 θ^m，Φ0 -> Φ1 移动的方向使 Φ0 -> θ^m 指向的方向。以此类推。
+```
+![](./images/1581171620355.png)
+![](./images/1581171767142.png)
