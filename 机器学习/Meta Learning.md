@@ -5,7 +5,7 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
 
-
+## Part 1
 ![](./images/1581089585071.png)
 ```
 让机器学习如何做学习这件事。
@@ -142,3 +142,92 @@ MAML 要比 Model Pre-training 要好。
 ```
 ![](./images/1581171620355.png)
 ![](./images/1581171767142.png)
+
+## Part 2
+
+### Gradient Descent as LSTM
+
+![](./images/1581172585022.png)
+```
+把 Learning Algorithm 当成 RNN。
+```
+>**Review - RNN**
+
+![](./images/1581172762774.png)
+```
+RNN 擅长处理 input 是一个 Sequence 的状态。
+```
+>**Review - LSTM**
+
+![](./images/1581172949758.png)
+![](./images/1581173061530.png)
+![](./images/1581173174830.png)
+![](./images/1581173223742.png)
+
+>**Similar to gradient descent based algorithm**
+
+![](./images/1581173358582.png)
+![](./images/1581173491379.png)
+![](./images/1581173564315.png)
+![](./images/1581173675282.png)
+![](./images/1581173805553.png)
+```
+将 ct-1 当成 θt-1 来看，
+```
+![](./images/1581174079726.png)
+![](./images/1581174151483.png)
+```
+
+```
+
+![](./images/1581174433079.png)
+![](./images/1581174551425.png)
+![](./images/1581174638582.png)
+![](./images/1581174736702.png)
+![](./images/1581174903136.png)
+
+## Part 3
+
+### Metric-based Approach
+
+![](./images/1581175370648.png)
+
+>**Siamese Network**
+
+![](./images/1581175571896.png)
+![](./images/1581175744739.png)
+```
+
+
+```
+
+>**Siamese Network Intuitive Explanation**
+
+![](./images/1581175863241.png)
+![](./images/1581176078082.png)
+
+
+```
+
+```
+![](./images/1581176158425.png)
+
+![](./images/1581176596400.png)
+
+>**Prototypical  Network**
+
+![](./images/1581176777272.png)
+
+>**Matching  Network**
+
+![](./images/1581176927654.png)
+
+>**Relation  Network**
+
+![](./images/1581177098717.png)
+
+
+>**Generate Data**
+
+![](./images/1581177212086.png)
+![](./images/1581177310014.png)
