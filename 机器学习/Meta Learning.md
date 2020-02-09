@@ -172,15 +172,23 @@ RNN 擅长处理 input 是一个 Sequence 的状态。
 ![](./images/1581173675282.png)
 ![](./images/1581173805553.png)
 ```
-将 ct-1 当成 θt-1 来看，
+将 ct-1 当成 θt-1 来看，将 ht-1，xt 换成 -△θl
+zf 这个 vector 中的每一个 dimension 都是 1,
+zi 这个 vector 中的每一个 dimension 都是 η,
+可以说 Gradient Descent 就是 LSTM 的简化版。
 ```
 ![](./images/1581174079726.png)
 ![](./images/1581174151483.png)
 ```
-
+为了减少更改 code，假设 θ 和 input 的关系不存在。当成一般的 LSTM 硬 train 下去。
 ```
 
 ![](./images/1581174433079.png)
+```
+所有的参数共用同一个 LSTM，LSTM 只能出一个参数，同样的 LSTM 被用在所有的参数书上。
+θ 的处理方式是一样的。不用担心会算出同样的值。
+初始从参数 θ 不一样，gradient 算出的结果也不一样。
+```
 ![](./images/1581174551425.png)
 ![](./images/1581174638582.png)
 ![](./images/1581174736702.png)
@@ -190,6 +198,12 @@ RNN 擅长处理 input 是一个 Sequence 的状态。
 
 ### Metric-based Approach
 
+![](./images/1581239332963.png)
+![](./images/1581239489080.png)
+```
+既做了 learning，又做了 testing。
+Face Verification：Training & Testing
+```
 ![](./images/1581175370648.png)
 
 >**Siamese Network**
@@ -197,22 +211,27 @@ RNN 擅长处理 input 是一个 Sequence 的状态。
 ![](./images/1581175571896.png)
 ![](./images/1581175744739.png)
 ```
-
-
+Train 的图和 Test 的图都通过 CNN，得到两个 embedding，CNN 的参数通常是一样的，计算两个 embedding vector 的 similarity。
+Train 资料和 Test 资料是同一个人，output 出的 score 越大越好。
+Train 资料和 Test 资料不是同一个人，output 出的 score 越小越好。
 ```
 
 >**Siamese Network Intuitive Explanation**
 
 ![](./images/1581175863241.png)
 ![](./images/1581176078082.png)
-
-
 ```
-
+Siamese Network 就是一个单纯的 Binary classification problem，每一个 train tas 就是 training 的一笔资料，每一笔资料都有两张 images。
+用 CNN 将所有的人脸投影到一个空间上，同一个人的脸就比较接近，不同人的脸就比较远。
 ```
 ![](./images/1581176158425.png)
 
+>**N-way Few / One-shot Learning**
+
 ![](./images/1581176596400.png)
+```
+5-ways 1-shot: 有 5 个 classes，每一个 class 都只有一个 example，
+```
 
 >**Prototypical  Network**
 
