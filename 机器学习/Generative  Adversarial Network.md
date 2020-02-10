@@ -151,16 +151,30 @@ Evaluation function、Potential function、Energy function
 当产生完一张完整的图片以后，检查这张图片里面 component 和 component 之间的关系是比较容易的。
 ```
 ![](./images/1581264517685.png)
-
+```
+依赖 x~ = arg max D(x) 产生
+假设已经有了一个 discriminator，这个 discriminator 可以实现鉴别好坏。
+怎么使用 discriminator 做生成呢？
+穷举所有可能的 x，一个一个丢到 discriminator 里面，看哪一个 x，discriminator 可以给它最高的分数，discriminator 给高分的 x 就是生成的结果。
+```
 ![](./images/1581264635586.png)
 ![](./images/1581264747381.png)
 ```
-
+当在训练 discriminator 的时候，给它很多好的 example，告诉它这是高分的，给它很多烂的的 example，告诉它这是低分的。
+但是 discriminator 经常会有 positive example，只有正面的例子，会出现看的什么都会觉得是正面的，都会给高分。
+有好的 Negative example 才能 train discriminator。
 ```
 ![](./images/1581264863259.png)
 ![](./images/1581264921687.png)
 ```
-
+使用 Iteration 的方法解决，怎么训练 discriminator？
+假设有一堆 positive example、negative example
+	positive example：人画的
+	negative example：random sample 出来的
+在每一个 iteration 里面，就是给 positive example 高的分数，给 negative example 低的分数。
+当学出来一个 discriminator 以后，可以用 discriminator 做 generation。(discriminator 是可以做 generation 的，只要会解 arg maxD(x)，用这个 discriminator generate 出一些它觉得好的 image，这些 image 用 x~ 表示)
+在下一个 iteration 里面，将原来 random 的 image 换成它觉得好的 image。
+反复循环下去
 ```
 
 ![](./images/1581265043382.png)
@@ -170,16 +184,131 @@ Evaluation function、Potential function、Energy function
 ```
 
 ![](./images/1581265444085.png)
+```
+GAN 可以被视为是 Structured Learning 的一个
+```
 
 ![](./images/1581265575396.png)
+```
+1.Generator
+Pros:
+	很容易做生成
+Cons：
+	不容易考虑 component 和 component 之间的 correlation，只学了 pixel 和 pixel 之间的相似程度，学不到大局。
+
+2.Discriminator
+Pros:
+	可以考虑大局
+Cons：
+	不容易生成，需要解一个 arg max D(x)
+```
 ![](./images/1581265674933.png)
+```
+generator 取代了 arg max D(x)，generator 就是在学怎么去解 arg max D(x) 这个 problem。
+```
 
 >**Benefit of GAN**
 
 ![](./images/1581265730788.png)
-
+```
+用 generator 来解 arg max D(x)，更加有效，更加一般化。
+```
 ![](./images/1581265860870.png)
-
 ![](./images/1581265980723.png)
-
 ![](./images/1581266037495.png)
+
+
+### Theory behind GAN
+
+>**Generation**
+
+![](./images/1581335234255.png)
+![](./images/1581335355568.png)
+```
+假设生成的是 image，每一张 image 都是 high dimensional 中的一个点，产生的 image 会有一个固定的 distribution，在整个 Image Space 里面，在整个 image 构成的高维空间中，只有少部分 sample 出来的 image 看起来像是人脸。
+```
+
+>**Maximum Likelihood Extimation**
+
+![](./images/1581336349032.png)
+```
+在 GAN 之前怎么做 Generation 这件事呢？
+
+```
+![](./images/1581336876552.png)
+```
+
+```
+
+![](./images/1581337772596.png)
+```
+
+```
+
+>**Discriminator**
+
+![](./images/1581337892962.png)
+```
+Pdata: 真实数据的 distribution
+PG: 
+前提是我们不知道 PG 和 Pdata 的 distribution 的样子，但是可以从这两个 distribution 中 sample data 出来，PG 是有 generator 所定义的，是从一个 probability distribution sample 一些 vector，每一个 vector 就会产生一张 image。
+```
+![](./images/1581339538762.png)
+```
+透过 discriminator 可以量这个两个 distribution 间的 divergence，根据 Pdata 和 PG 去训练一个 discriminator，给 Pdata 的 score 越大越好，给 PG 的 score 越小越好，训练的结果就会告诉我们 Pdata 和 PG 之间的 divergence 有多大。
+Objective function	V(G,D)：和 Generator 和 Discriminator 有关，在 train Discriminator 的时候，会 fix 住 Generator，只调 Discriminator 的参数，maximum 结果，
+如果 x 是从 Pdata 中 sample 出来的，希望 logD(x) 越大越好
+如果 x 是从 generator 中 sample 出来的，希望 log(1 - D(x)) 越大越好，它的值越小越好。
+Discriminator 做的事情和 Binary Classification 几乎一样，train 下去之后，Binary Classification 是在 minimum cross entropy 或者 minimum mean squared error。
+当我们解完这个 optimization problem 之后，会得到一个最小的 loss，或者是会得到一个最大的 objective value。
+```
+![](./images/1581339778294.png)
+```
+假设 sample 出来的 data 靠的很近，对 Binary classify 来说，很难区别这两个类别的不同，loss 就没办法压低，就没有办法把 objective value 提高。没有办法找到一个 D，使得 V 的值很大。意味着这两个类别的 data 是很接近的，他们的 divergence 是小的。
+```
+
+>**证明 Objective Value 和 Divergence 有关系**
+
+![](./images/1581342205355.png)
+![](./images/1581342928413.png)
+![](./images/1581343107140.png)
+![](./images/1581343146075.png)
+![](./images/1581343413521.png)
+```
+找到一个 function D，使得方程结果越大越好，前提 D(x) 可以是任意 function。
+求 D*，什么样的 D 可以让微分值为 0，是 critical point。
+```
+![](./images/1581343792450.png)
+![](./images/1581344309183.png)
+```
+本来是找到一个 G 来 minimum PG 和 Pdata 的 divergence
+Div(PG,Pdata)，写出一个 objective function V(D,G)，找到一个 D 来 maximum V(D,G)，就是 PG 和 Pdata 的 divergence。
+当 generator 是 G1 的时候，红色点是 discriminator 可以让 V(G,D) 最大。
+V(G,D) 高就代表着 PG 和 Pdata 之间的 divergence。
+```
+
+>**Algorithm**
+
+![](./images/1581344500679.png)
+![](./images/1581344848650.png)
+![](./images/1581345171878.png)
+![](./images/1581345923556.png)
+```
+在 train generator 的时候，一次不能 update 太多
+在 train discriminator 的时候，理论上应该把它 train 到底，update 多次，必须找到 maximum value，才是量 divergence。
+```
+![](./images/1581346320581.png)
+```
+Minimize Cross-entropy 等同于 Maximize objective function
+```
+![](./images/1581347438447.png)
+```
+2、从某一个 prior distribution(Gussion Distriution、Normal Distribution) 去 sample 出 m 个 vector，这些 vector 用 z表示。 
+3、把 vector z 丢到 Generator 里面，会产生 image。
+4、train discriminatior
+```
+![](./images/1581347705793.png)
+
+![](./images/1581347870785.png)
+
+![](./images/1581348295234.png)
