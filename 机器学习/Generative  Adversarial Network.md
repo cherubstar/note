@@ -233,8 +233,16 @@ generator 取代了 arg max D(x)，generator 就是在学怎么去解 arg max D(
 ![](./images/1581336349032.png)
 ```
 在 GAN 之前怎么做 Generation 这件事呢？
+现在是不知道 Pdata(x) 的 formulation，自己找一个 distribution PG(x)，是由一组参数 θ 操控，调整 Gussion 的 mean 和 varince 使得得到的 distribution PG(x) 和 真实的 distribution Pdata(x) 越接近越好。
+1、sample m 个 data from Pdata
+2、对每一个 sample 出来的 x 计算它的 Likelihood，假设给定一组参数 θ，就可以知道 PG(x) 这个 probability distribution 的图形样子。就可以计算从这个 distribution sample 出某一个 xi 的几率。
+3、找出一个 θ，使得 PG 和 Pdata 越接近越好，把所有的几率乘起来，就得到了 total likelihood，希望这个 total likelihood 越大越好。
 
+Find θ* maximum the likelihood.
 ```
+
+>**Maximum Likelihood Extimation = Minimize KL Divergence**
+
 ![](./images/1581336876552.png)
 ```
 
@@ -242,7 +250,10 @@ generator 取代了 arg max D(x)，generator 就是在学怎么去解 arg max D(
 
 ![](./images/1581337772596.png)
 ```
-
+把从 Gussion Distribution sample 出来的 z 丢到 generator 中，得到另外的 sample，把这些 sample 集合起来，就可以得到另外一个 distribution。
+prior distribution: 可以设置成 Normal Distribution、Uniform distribution.
+PG(x) 和 Pdata(x) as close as possible
+G* = arg min Div(PG, Pdata)：找一个 possible，这个 possible 定义出一个 distribution PG，这个 PG 和 Pdata 的 divergence 越接近接好。
 ```
 
 >**Discriminator**
