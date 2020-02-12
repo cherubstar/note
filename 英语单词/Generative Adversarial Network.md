@@ -28,7 +28,13 @@ grammar_cjkRuby: true
 | constraint | n.  | 限制; 限定; 约束; 严管 |
 | norm | n.  | 常态; 正常行为; 规范; 行为标准; 标准; 定额; 定量 |
 | Feature Extraction | n.  | 特征提取 |
-|  | n.  |  |
+| reconstruction error | n.  | 重建误差 |
+| optimum | adj. / n.  | 最佳的; 最适宜的; 最佳结果; 最好的条件 / 最佳效果; 最适宜条件 |
+| predictor | n.  | 预测器; 预示物 |
+| Feature Disentangle | n.  | 特征分离 |
+| disentangle | v.  | 分清; 使解脱; 使脱出; 使摆脱; 理顺 |
+| segment | n. / v.  | 部分; 份; 片; 段; 弓形; 圆缺 / 分割; 划分 |
+| phonetic | adj.  | 表示语音的; 音标的; 与发音近似的; 语音的 |
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
