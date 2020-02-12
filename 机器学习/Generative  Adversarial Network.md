@@ -665,3 +665,48 @@ learn 两个 encoder
 作用：对两个 vector，判断这两个 vector 是同一个人说的，还是不同人说的。
 ```
 ![](./images/1581494269357.png)
+
+>**GAN + Autoencoder**
+
+![](./images/1581515228316.png)
+```
+怎么反推出现在 input vector 每一个 dimension 对应的特征是什么？
+先 train 好一个 generator，这个 generator 可以根据一个 vector z，会产生一个 image x，做一个逆向的工程，去反推如果给了一张现成的 image，什么样的 z 可以生成这现成的 image。
+再 learn 另外一个 Encoder，这个 Encoder 和 Generator 合起来就是 Auto-encoder，在 train Auto-encoder 的时候，input 一张 image x，把 x 压成 vector z，把 z 丢到 Generator 以后，它 output 是原来那张 image，在 train 的过程中，Generator 的参数是固定不动的，在实作中，Encoder 和 Discriminator 很像，可以用 Discriminator 的参数初始化 Encoder 的参数。
+```
+
+>**Attribute Representation**
+
+![](./images/1581515344478.png)
+```
+将短发的人脸的 code 反推出来，平均就会得到短发人脸的代表
+将长发的人脸的 code 反推出来，平均就会得到长发人脸的代表
+再相减得 zlong
+Short Hair x -> En(x) + zlong = z' -> Gen(z') Long Hair
+```
+
+>**Basic Idea**
+
+![](./images/1581516884873.png)
+```
+首先 train 一个 GAN，train 一个 Generator，，在 space 上随便 sample 一个点(vector)，丢到 generator 中，就会产生一个 image。
+将 短袖图片 反推出它在 code space 的位置，然后在 code space 做小小的移动，就会产生一张新的图。
+```
+>**Back to z**
+
+![](./images/1581516939218.png)
+```
+怎么做从一张 image 反推出原来的 code 样子？
+1、
+```
+![](./images/1581516981830.png)
+```
+找一个 z，一方面把 z 丢到 generator 里产生一张 image，要符合 constraint，希望新的 z 和旧的 z0 越接近越好。
+```
+
+>**Image Completion**
+
+![](./images/1581517019527.png)
+```
+修复
+```
