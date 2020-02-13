@@ -920,7 +920,7 @@ Short Hair x -> En(x) + zlong = z' -> Gen(z') Long Hair
 修复
 ```
 
-
+## Improving Sequence Generation by GAN
 
 
 
