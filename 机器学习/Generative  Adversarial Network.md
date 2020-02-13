@@ -5,7 +5,7 @@ renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
 
-### Introduction
+## Introduction
 
 ![](./images/1581243846564.png)
 ![](./images/1581243938600.png)
@@ -217,8 +217,82 @@ generator 取代了 arg max D(x)，generator 就是在学怎么去解 arg max D(
 ![](./images/1581265980723.png)
 ![](./images/1581266037495.png)
 
+## Conditional Generation of GAN
 
-### Theory behind GAN
+```
+你可以输入比如文字，产生对应那个文字的图片。可以操控输出的结果。
+```
+
+### Text-to-Image
+
+![](./images/1581598403431.png)
+```
+输入文字产生对应的图片，可以当作单纯的 supervised learning problem 来看，需要一大堆的图片，每一张图片都有对应的文字的描述。
+输入一段文字，输出一张图片，希望输出的图片和目标越接近越好。
+```
+
+>**Conditional GAN**
+
+![](./images/1581598821681.png)
+![](./images/1581599289355.png)
+```
+在原来的 GAN 中，input 一个从 normal distribution sample 出来的 z 到 generator 里，根据这个 z 产生一张 image。
+在 Conditional Generation 里，generator 不止需要 input z，同时还有 input Conditional c。
+在原来的 discriminator 里，input image x，然后 discriminator 告诉你 x 的 quality 好不好。
+希望机器按照我们输入的 condition，产生不同的 image。
+在作 Conditional GAN 的时候，不可以只看 generator 的 output，要同时看 generator 的 input 和 output。input condition c 和 object x 到 discriminator，然后产生一个 scalar，这个 scalar 做两件事情
+	1、x 是不是真实的
+	2、x 和它的 condition c 合起来是不是可以凑成一对
+
+有两种 case 要给低分的
+	1、输入一段文字给 generator，generator 产生一张模糊的图给低分
+	2、给一张清晰的图，但随便给它加上随机的文字，给低分
+```
+>**Conditional GAN - Algorithm**
+
+![](./images/1581599585412.png)
+
+>**Conditional GAN - Discriminator**
+
+![](./images/1581600222873.png)
+```
+
+```
+>**Stack GAN**
+
+![](./images/1581600418777.png)
+
+### Image-to-Image
+
+![](./images/1581600507370.png)
+![](./images/1581600602731.png)
+![](./images/1581600717687.png)
+
+>**Patch GAN**
+
+![](./images/1581600827276.png)
+
+>**Speech Enhancement**
+
+![](./images/1581600971503.png)
+![](./images/1581601028247.png)
+
+>**Video Generation**
+
+![](./images/1581601133403.png)
+
+![](./images/1581601312049.png)
+[小精灵](https://github.com/dyelax/Adversarial_Video_Generation)
+
+
+## Unsupervised Conditional Generation
+
+
+
+
+
+
+## Theory behind GAN
 
 >**Generation**
 
@@ -324,7 +398,7 @@ Minimize Cross-entropy 等同于 Maximize objective function
 
 ![](./images/1581348295234.png)
 
-### General Framework of GAN
+## General Framework of GAN
 
 ```
 对某种 objective function 就是在量 JS Divergence，能不能量其他的  Divergence，fGAN 告诉我们怎么量其他的 Divergence，用不同的 f-divergence 量 generate example 和 real example 之间的差距。
@@ -417,7 +491,7 @@ distribution 有很多的 mode，但 generator 只能产生同一群，没有办
 ```
 
 
-### Tips for Improving GAN
+## Tips for Improving GAN
 
 >**JS divergence is not suitable**
 
@@ -527,7 +601,7 @@ train GAN 的时候，让 generator 顺着 discriminator 给出的 gradient 的�
 
 ```
 
-### Feature Extraction
+## Feature Extraction
 
 >**InfoGAN**
 
@@ -715,7 +789,7 @@ Short Hair x -> En(x) + zlong = z' -> Gen(z') Long Hair
 
 
 
-### Evaluation
+## Evaluation
 
 ```
 有一些客观的方法来衡量说产生出来的 object 是好或者不好。
