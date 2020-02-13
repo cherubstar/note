@@ -287,6 +287,100 @@ generator 取代了 arg max D(x)，generator 就是在学怎么去解 arg max D(
 
 ## Unsupervised Conditional Generation
 
+![](./images/1581604679444.png)
+```
+Conditional Generation 可以是 supervised 的，也可以是 unsupervised。
+假设有一个 domain x 是 real image，domain y 是梵高的画作，可以 learn 一个 generator，给它一张 real image，它 output image 看起来像梵高的画作。在 training 的时候，不需要 label data。
+可以做语音，影像等。
+```
+![](./images/1581604837140.png)
+```
+1、Direct Transformation
+input 和 output 不能差太多，这个 generator，给它一个 input，output只能小改。可以做图片画风转换。
+2、Projection to Common Space
+如果要转的 input 和 output 差距很大。比如把真人图片转化成动画人物，先 learn 一个 encoder，input 真人 image 给 encoder，encoder 将 image 的特征抽取出来。
+```
+
+>**Direct Transformation**
+
+![](./images/1581604947835.png)
+```
+没有 domain x 和 domain y 的 link，generator 怎么知道产生 domain y 的 image？
+需要一个 y domain 的 discriminator，这个 discriminator 看过很多 y domain 的 image，所以给它一张 image，它可以鉴别是 x domain image 还是 y domain image。
+generator 要做的事情是骗过 discriminator，那 generator 产生出来的 iamge 就会像是 y domain image。
+问题：generator 可以产生一张像梵高的画作，但可以产生和 input 无关的东西。
+所以 generator 不只是骗过 discriminator 就好，同时 generator 的 input 和 output 有一定程度的关系。
+```
+
+![](./images/1581605050443.png)
+```
+1、第一个方法就是不管它，直接 train 下去。
+如果 generator 比较 shallow，input 和 output 特别像
+如果 generator 很深，就可以让 input 和 output 不一样，那就需要做额外的处理，免得让 input 和 output 变得完全不一样。
+```
+![](./images/1581605127114.png)
+```
+2、第二个方法就是拿一个 pre-trained 好的 network，比如 VGG，然后把 generator 的 input 和 output 都给 pre-trained 好的 network，output 出 embedding。
+在 train 的时候，generator 一方面是想要骗过 discriminator，让 output 的 image 看起来像梵高的画作，同时 generator 还有另一个任务，希望 pre-trained 的 mode 它的 embedding output 不要差太多。
+好处：如果 embedding 不会差太多，generator 的 input 和 output 就不会差太多。
+```
+![](./images/1581605208936.png)
+```
+3、第三个方法就是 CycleGAN，在 CycleGAN 里面要 train 一个 x domain 到 有domain 的 generator，同时 train 一个 y domain 到 x domain 的 generator。
+目的：input 一张风景 image，第一个 generator 将它转成 y domain 的图，第二个 generator 将 y domain 的图还原成原来一摸一样的图。现在除了要让 generator 骗过 discriminator 以外，同时要让 input 和 output 越像越好。
+```
+![](./images/1581605262777.png)
+```
+CycleGAN 可以做双向的，再 train 另外一个 GAN，将 y domain 的图转成 x domain 的图，同时需要 discriminator 确保这个 generator 产生的图像是 x domain 的图，接下来再把 x domain 的图转回 y domainn 的图。一样希望 input 和 output 越接近越好。
+```
+
+>**Issue of Cycle Consistency**
+
+![](./images/1581606285962.png)
+```
+CycleGAN 存在一些弊端
+```
+![](./images/1581606337427.png)
+
+>**StarGAN**
+
+![](./images/1581606389332.png)
+```
+多个 domain 互转，StarGAN 只 learn 了一个 generator，在多个 domain 间的互转。
+```
+![](./images/1581606512788.png)
+```
+learn 一个 discriminator，这个 discriminator 会做两件事
+1、首先事给 discriminator 一张 image，discriminator 鉴别这张 image 是 real 还是 fake 的，
+```
+
+![](./images/1581606645616.png)
+![](./images/1581606690646.png)
+
+
+![](./images/1581606722678.png)
+
+
+![](./images/1581606940402.png)
+
+![](./images/1581606985706.png)
+
+![](./images/1581607111148.png)
+
+
+![](./images/1581607213171.png)
+
+
+![](./images/1581607333663.png)
+
+
+![](./images/1581607452939.png)
+
+
+![](./images/1581607899917.png)
+
+
+![](./images/1581608045654.png)
 
 
 
