@@ -45,6 +45,6 @@ grammar_cjkRuby: true
 | Comparison | n.  | 比较; 对比; 相比 |
 | sampling process | n.  | 采样过程 |
 | discrete | adj.  | 离散的; 分离的; 互不相连的; 各别的 |
-|  | n.  |  |
-|  | n.  |  |
+| reconstructor | n.  | 再现器; 重建者; 重构 |
+| reconstruction | n.  | 重建; 改造; 复原; 修复; 修理; 重现 |
 |  | n.  |  |
