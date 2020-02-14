@@ -35,7 +35,16 @@ grammar_cjkRuby: true
 | disentangle | v.  | 分清; 使解脱; 使脱出; 使摆脱; 理顺 |
 | segment | n. / v.  | 部分; 份; 片; 段; 弓形; 圆缺 / 分割; 划分 |
 | phonetic | adj.  | 表示语音的; 音标的; 与发音近似的; 语音的 |
-|  | n.  |  |
+| confuse | v.  | 使糊涂; 使迷惑;( 将…)混淆，混同; 使更难于理解 |
+| latent representation | n.  | 潜在表征 |
+| latent | adj.  | 潜在的; 潜伏的;隐藏的 |
+| shallow | adj.  | 浅的; 肤浅的; 浅薄的; (呼吸)浅的，弱的 |
+| Training Criterion | n.  | 培训标准 |
+| criterion | n.  | 标准，准则，原则 |
+| Reinforcement Learning | n.  | 强化学习 |
+| Comparison | n.  | 比较; 对比; 相比 |
+| sampling process | n.  | 采样过程 |
+| discrete | adj.  | 离散的; 分离的; 互不相连的; 各别的 |
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
