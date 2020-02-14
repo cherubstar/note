@@ -471,7 +471,7 @@ G* = arg min Div(PG, Pdata)：找一个 possible，这个 possible 定义出一�
 ```
 Pdata: 真实数据的 distribution
 PG: 
-前提是我们不知道 PG 和 Pdata 的 distribution 的样子，但是可以从这两个 distribution 中 sample data 出来，PG 是有 generator 所定义的，是从一个 probability distribution sample 一些 vector，每一个 vector 就会产生一张 image。
+前提是我们不知道 PG 和 Pdata 的 distribution 的样子，但是可以从这两个 distribution 中 sample data 出来，PG 是由 generator 所定义的，是从一个 probability distribution sample 一些 vector，每一个 vector 就会产生一张 image。
 ```
 ![](./images/1581339538762.png)
 ```
@@ -633,7 +633,7 @@ distribution 有很多的 mode，但 generator 只能产生同一群，没有办
 ![](./images/1581417630886.png)
 ```
 最原始的 GAN 它量的是 generated data 和 real data 之间的 JS divergence，但是现在用 JS Divergence 来衡量的时候却有一个严重的问题。
-问题的根源：generator 产生的 data distribution 和 real 的 data distribution 往往是没有重叠的。
+问题的根源：generator 产生的 data distribution 和 real data distribution 往往是没有重叠的。
 	1、data 本质上的问题：image 是一个 high dimensional space 中的低维 manifold，PG 和 Pdata 的 overlap 几乎是可以忽略的。
 	2、sample 出来的少量 data 里面，PG 和 Pdata 是没有重合的。
 ```
@@ -652,7 +652,7 @@ intuition: 只要不重合，loss 就是一样的，Binary Classifier 很容易�
 
 ![](./images/1581418202293.png)
 ```
-蓝色是 fit data 的 distribution，绿色是 real data 的 distribution，learn 一个 Binary Classifier，Binary Classifier 会给绿蓝色点 0 fen，给绿色点 1 分，Binary Classifier 的 output 是 sigmod function，在接近 1 和 0 的地方特别平，即梯度消失，train 不动。
+蓝色是 fit data 的 distribution，绿色是 real data 的 distribution，learn 一个 Binary Classifier，Binary Classifier 会给绿蓝色点 0 分，给绿色点 1 分，Binary Classifier 的 output 是 sigmod function，在接近 1 和 0 的地方特别平，即梯度消失，train 不动。
 
 Least Square GAN(LSGAN) 将 sigmod 换成了 linear，本来是一个 classification problem，现在是一个 regression problem
 如果是 positive example 就让它的值越接近 1 越好，如果是 negative example 就让它的值越接近 0 越好。
@@ -664,11 +664,10 @@ Least Square GAN(LSGAN) 将 sigmod 换成了 linear，本来是一个 classifica
 在 Wasserstein GAN 里面用的是 Earth Mover's Distance，或者叫做 Wasserstein Distance 来衡量两个 distribution 的差异。
 P 向 Q 走的平均距离就是 Earth Mover's Distance。
 ```
-
 ![](./images/1581418485899.png)
 ![](./images/1581418540097.png)
 ```
-把 P 的土铲倒 Q 的位置的时候，有很多组不同的铲法，推土机走的平均距离不一样，Wasserstein Distance 是说穷举所有可能铲土的方法，叫做 moving plan，每一个 moving plan，推土机平均的距离算出来，看哪一个距离最小。
+把 P 的土铲倒 Q 的位置的时候，有很多组不同的铲法，推土机走的平均距离不一样，Wasserstein Distance 是说穷举所有可能铲土的方法，叫做 moving plans，每一个 moving plan，推土机平均的距离算出来，看哪一个距离最小。
 ```
 ![](./images/1581418721793.png)
 ```
@@ -693,8 +692,8 @@ Earth Mover's Distance 要做的就是穷举所有的 γ，看哪一个 γ 算�
 ```
 Lipschitz Function
 当 input 有了 change 的时候，output change 不能太大，把 K = 1 is 1-Lipschitz Function，意味着说 output change 比 input change 小，这个 function 就是一个 smooth function。
-discriminator 需要 constraint，原始的做法是 Weight Clipping
-用原来的 Gradient Ascent train discriminator，train 完后，如果 weight 大于事先设置好的参数 c 后，就设置 w=c，if w<-c，就设置 w=-c。限制住了 weight 的大小，是比较平滑的，让 discriminator 在 output 的时候没有办法产生非常剧烈的变化。
+discriminator 需要 constraint
+原始的做法是 Weight Clipping，用原来的 Gradient Ascent train discriminator，train 完后，如果 weight 大于事先设置好的参数 c 后，就设置 w=c，if w<-c，就设置 w=-c。限制住了 weight 的大小，是比较平滑的，让 discriminator 在 output 的时候没有办法产生非常剧烈的变化。
 ```
 
 >**Improved WGAN(WGAN-GP)**
@@ -921,6 +920,57 @@ Short Hair x -> En(x) + zlong = z' -> Gen(z') Long Hair
 ```
 
 ## Improving Sequence Generation by GAN
+
+![](./images/1581648844573.png)
+```
+GAN 可以做 Unsupervised Conditional Generation
+```
+
+### Conditional Sequence Generation
+
+![](./images/1581649137573.png)
+```
+只要是产生 Sequence 的 task，就是 Conditional Sequence Generation。
+语音辨识
+翻译
+Chatbot
+```
+
+>**Review:Sequence-to-sequence**
+
+![](./images/1581649370490.png)
+```
+Chat-bot 是一个 Sequence-to-sequence mode，有一个 encoder 和 decoder，input sentence c 到 encoder，从 decoder output x，需要收集 training data(人的对话)，likelihood 越大越好，如果正确答案是 I'm good，那么 decoder 在产生句子的时候，第一个 text 产生 I 的几率越大越好，依次类推。
+train classifier 的时候，Maximize likelihood = Minimize cross entropy，一摸一样。
+```
+
+### Improving Supervised Seq-to-seq Model
+
+#### RL
+
+![](./images/1581650099893.png)
+```
+RL 可以看作是 GAN 的 special case。
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
