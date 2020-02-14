@@ -27,7 +27,7 @@ vector -> Generator -> image(high dimensioal vector)
 ```
 ![](./images/1581254988025.png)
 ```
-假设要产生图片，就输入 image，假设要产生句子，就输入 句子
+假设要产生图片，就输入 image，假设要产生句子，就输入句子
 输出是一个 scalar，表示产生出来的这张 image 的 quality，这个 scalar 越大，产生出来的 image 的 quality 越高，看起来越像是真是的 image，看起来越 realistic。
 ```
 
@@ -442,7 +442,7 @@ Semantic Consistency
 ![](./images/1581336349032.png)
 ```
 在 GAN 之前怎么做 Generation 这件事呢？
-现在是不知道 Pdata(x) 的 formulation，自己找一个 distribution PG(x)，是由一组参数 θ 操控，调整 Gussion 的 mean 和 varince 使得得到的 distribution PG(x) 和 真实的 distribution Pdata(x) 越接近越好。
+现在是不知道 Pdata(x) 的 formulation，自己找一个 distribution PG(x)，是由一组参数 θ 操控，调整 Gaussian 的 mean 和 varince 使得得到的 distribution PG(x) 和 真实的 distribution Pdata(x) 越接近越好。
 1、sample m 个 data from Pdata
 2、对每一个 sample 出来的 x 计算它的 Likelihood，假设给定一组参数 θ，就可以知道 PG(x) 这个 probability distribution 的图形样子。就可以计算从这个 distribution sample 出某一个 xi 的几率。
 3、找出一个 θ，使得 PG 和 Pdata 越接近越好，把所有的几率乘起来，就得到了 total likelihood，希望这个 total likelihood 越大越好。
