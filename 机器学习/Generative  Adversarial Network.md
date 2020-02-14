@@ -1200,10 +1200,16 @@ learn 一个 Seq2seq 的 model，收集一大堆的文章，每一篇文章都�
 ```
 
 ![](./images/1581688368830.png)
+```
+document -> generator -> word sequence -> reconstructor -> document
+如果 reconstructor 可以把简短的句子变成原来的文章，代表 word sequence 有原来文章的重要资讯，因为这个句子有原来文章重要的资讯，所以就可以把它当成摘要，可以看成 seq2seq2seq auto-encoder。
+一般的 auto-encoder 都是有 latent vector 表示资讯，这儿是用句子来表示资讯，希望是人可以读的。
+````
 
 ![](./images/1581688399669.png)
 ```
-加一个 discriminator，
+为了使 generator 产生的句子是人可以看懂的，加一个 discriminator，这个 discriminator 就会强迫 generator 产生的句子一方面要是个 summary，可以被 reconstructor 解回原来的文章，同时 generator output 的句子也要使 discriminator 可以看的懂的，觉得像是人类写的 summary。
+在 training 的时候，generator 的 output 是 discrete，可以用 reinforce algorithm。
 ```
 
 ![](./images/1581695825304.png)
