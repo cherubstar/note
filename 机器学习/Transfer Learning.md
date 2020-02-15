@@ -142,12 +142,77 @@ Training data 和 Testing data 是非常的 mismatch 的。
 ```
 给 feature extractor 增加任务的难度
 feature extractor output 的 feature 不止骗过 domain classifier，还有同时让 label predictor 做的好。
+
+feature extractor：Maximize label classification accuracu, minimize domain classification accuracy
+Label predictor：Maximize label classification accuracy
+Domain classifier：Maximize domain classification accuracy
 ```
 ![](./images/1581772935811.png)
 ![](./images/1581772964552.png)
 
-
-
 #### Zero-shot learning
 
 ![](./images/1581772992747.png)
+
+>**Task description**
+
+![](./images/1581775092877.png)
+```
+Source Data 有 function 的 input 和 output，是有 label 的，视作 Training data。
+Traget Data 只有 function 的 input，是没有 label 的，实作 Testing data。
+
+Training data 和 Testing data 是 Different tasks。
+比如 Source data 的 image 是 cat、dog
+在 Target data 的 image 是 草泥马，在 Source data 从来都没有出现过草泥马。
+这样的 task 在语音上很早就有 solution，语音本来常常会遇到 Zero-shot Learning 的问题，Testing data 的词汇有些是在 Training data 中没有出现的。
+```
+![](./images/1581775162727.png)
+```
+在影像上可以把每一个 class 用它的 attribute 来表示，有一个 database，这个 database 里面有所有不同可能的 object 跟它的特性，假设现在做的是辨识动物，但是 training data 和 testing data 中的动物是不一样的，attribute 要定义的够丰富，每一个 class 都要有它独一无二的 attribute。
+在 training 的时候，不直接辨识说每一张 image 属于哪一个 class，而是去辨识说每一张 image 里面它具备什么样的 attribute。
+```
+![](./images/1581775188171.png)
+```
+在 testing 的时候，就算来了一种从来没有见过的 image，只要能把它的 attribute 找出来，就查表说在 database 里面哪一种动物它的 attribute 和现在 model 的 output 最接近。
+```
+![](./images/1581775244191.png)
+```
+有可能 attribute 比较复杂，attribute 的 dimension 的可能很大，甚至可以做 attribute embedding。
+有一个 embedding space，把每一张 image 通过 transform 变成 embedding space 上的一个点，把所有 attribute 也变成 embedding space 上的点。
+f(*) and g(*) can be NN，f(*) and g(*) as close as possible。
+在 testing 的时候，如果有一张没有看过的 image，这个 image 的 attribute embedding 跟哪个 attribute 最像。
+就是 Grass-mud horse。
+
+把 image 和 attribute 都可以描述成 vector，把 image 和 attribute 投影到同一个 embedding space 里面
+对 image 的 vector x，attribute 的 vector y 降维，降到同样的 dimension。
+怎么找 f(*) and g(*)？
+f(*) and g(*) 就是 Neural Network，input image 变成一个 vector，input attribute 变成 vector。
+假设已经知道 y1 是 x1 的 attribute，y2 是 x2 的 attribute，找一个一个 f(*) and g(*) 可以让 x1 和 y1 投影到 embedding space 以后越接近越好，让 x2 和 y2 投影到 embedding space 以后越接近越好。
+假如有一张没有看过的 image x3 在 testing data 里面，它也可以同 f(*) 变成 embedding space 的一个 vector，接下来就看这个 embedding vector x3 和 y3 的 embedding 最接近，y3 就是它的 attribute。
+```
+![](./images/1581775284433.png)
+```
+有时候会遇到的问题: 如果没有 database，根本不知道每一个动物的 attribute 是什么，怎么办？
+可以借用 word vector，word vector 的每一个 dimension 就代表了这个 word 的某种 attribute。
+```
+![](./images/1581775320644.png)
+```
+xn 通过 f(x)，yn 通过 g(y)，它的距离越接近越好，这是有问题的。
+如果知道 xn 和 yn 是同一个 pair，要让它们的距离越接近越好
+如果知道 xn 和另外一个 yn 不是同一个 pair，要让它们的距离越接远越好
+最小值是 0，当不是 0 的那一项小于 0 的时候，loss 就是 0。
+什么时候会有 zero loss 呢？
+如果 f(xn) 和 g(yn) 的 innerkuaida，要大过所有其他的 f(xn) 和 g(ym) 的 innerkuaida，而且还要大过一个 margin k。
+```
+**>Convex Combination pf Semantic Embedding**
+
+![](./images/1581775344837.png)
+```
+只需要有一个 word vector 和一个 语音辨识系统。
+```
+![](./images/1581775379967.png)
+
+### 第三、四象限
+
+![](./images/1581775529347.png)
+![](./images/1581775574103.png)
