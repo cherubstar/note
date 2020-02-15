@@ -219,5 +219,13 @@ xn 通过 f(x)，yn 通过 g(y)，它的距离越接近越好，这是有问题�
 ```
 Target data 有 label，Source data 没有 label 的情况叫做 Self-taught learning，可以算是 Semi-supervised learning。
 Target data 没有 label，Source data 没有 label 的情况叫做 Self-taught Clustering
+
+Self-taught learning 和 Semi-supervised learning 有一些不一样的地方，
+Semi-supervised learning 的 labelled data 和 unlabelled data 是比较有关系的。
+在 Self-taught learning 里面，labelled data 和 unlabelled data 是比较远的。
 ```
 ![](./images/1581775574103.png)
+```
+假如 Source data 够多，虽然是 unlabelled，可以去 learn 一个 feature extractor，总之有大量 data，它们没有 label，可以做的是用这些 data learn 好的 feature extractor，用这些 data learn 一个好的 representation。
+用这个 feature extractor 在 target data 抽取 feature。
+```
