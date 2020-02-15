@@ -12,3 +12,7 @@ grammar_cjkRuby: true
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
+|  | n.  |  |
+|  | n.  |  |
+|  | n.  |  |
+|  | n.  |  |
