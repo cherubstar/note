@@ -217,7 +217,7 @@ xn 通过 f(x)，yn 通过 g(y)，它的距离越接近越好，这是有问题�
 
 ![](./images/1581775529347.png)
 ```
-Target data 有 label，Source data 没有 label 的情况叫做 Self-taught learning
+Target data 有 label，Source data 没有 label 的情况叫做 Self-taught learning，可以算是 Semi-supervised learning。
 Target data 没有 label，Source data 没有 label 的情况叫做 Self-taught Clustering
 ```
 ![](./images/1581775574103.png)
