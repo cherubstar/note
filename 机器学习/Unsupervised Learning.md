@@ -44,16 +44,36 @@ step 2: pick a threshold
 
 ![](./images/1582028055198.png)
 ```
-光只做 cluster，是非常卡的，在做 cluster 的时候，就是以偏概全，因为每一个 object 都必须要属于某一个 cluster。应该用一个 vector 表示 object。这个 vector 里每一个 dimension 就代表了某一种特质。某一种 attribute。
+光只做 cluster，是非常卡的，在做 cluster 的时候，就是以偏概全，因为每一个 object 都必须要属于某一个 cluster。应该用一个 vector 表示 object。这个 vector 里每一个 dimension 就代表了某一种特质。某一种 attribute。这件事情就叫做 Distributed Representation。
+如果原来的 object 是一个 high dimensional 的东西，现在用 attribute 来描述，它就从比较高维的空间变成比较低维的空间。这件事情就叫做 Dimension Reduction。
+一样的事情，不一样的称呼。
 ```
-![](./images/1582028089900.png)、
 
+### Dimension Reduction
 
+![](./images/1582028089900.png)
+```
+在 2D 的空间就可以描述 3D 的 information，简化了问题。
+```
 ![](./images/1582028130449.png)
-
-
+```
+In MNIST,a digit is 28×28 dims.
+Most 28×28 dim vectors are not digits
+根据角度变化知到 3 在 28x28 dims 的样子。
+```
 ![](./images/1582028165719.png)
+```
+怎么做 Dimension Reduction？
+找到一个 function，input x，output z，
+The dimension of z would be smaller than x。
+在 Dimension Reduction 里面的方法
+方法 1：Feature selection
+	把 data 的分布放在二维平面上，根据集中的 x2 的 dimension 位置。select x2，不见得总是有用。
+方法 2：Principle component analysis(PCA)
+	function 是一个简单的 linear function，input x 和 output z 之间的关系就是 linear transform，z = Wx，(W 是 matrix)，根据一大堆的 x 把 W 找出来。
+```
 
+### PCA
 
 ![](./images/1582028221783.png)
 
