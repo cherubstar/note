@@ -242,6 +242,8 @@ z0 和这一把每一个 vector 都计算 match 的 score，计算的结果不�
 
 ### Tips for Generation
 
+#### Attention
+
 ![](./images/1581951552971.png)
 ```
 有什么样的 tip 呢？
@@ -251,42 +253,86 @@ z0 和这一把每一个 vector 都计算 match 的 score，计算的结果不�
 比如，把 (a11,a21,a31,a41) 和起来，希望跟某一个值 τ 越接近越好。
 ```
 
+#### Mismatch between Train and Test
+
 ![](./images/1581957302265.png)
-
-
+```
+Train and Test 不一致。
+· Training
+假设 Training 的状况要产生的 target output 是 A B B 这三个 word，怎么让 machine 学的呢？
+看到一个 condition，input condition，machine 产生一个 distribution，希望这个 distribution 跟 A 越接近越好，distribution 中 A 的几率越高越好。
+Minimize cross-entropy of each component。
+```
 ![](./images/1581957333334.png)
-
-
-
-
+```
+· Generation
+有一个 condition，产生一个 distribution，根据 distribution 做 sampling，假设 sample 出来的是 B，接下来会把 B 当成下一个时间点的 input。
+在 Testing 的时候，machine 的 input 是自己生成的，有可能有错的东西
+在 Training 的时候，machine 的 input 是正确的东西
+这个问题叫做 Exposure Bias(曝光偏差)
+```
 ![](./images/1581957375660.png)
+```
+怎么解决 Exposure Bias？
+· Training
+假设 θ 只有两个词汇，machine 全部可 output 的可能性有 8 种，在第一个 text step 告诉 machine 说产生 A，在第二个 text step 告诉 machine 在已经产生 A 的前提下，在 (A,B) 里面选对的那个。
+· Testing
+在 test 的时候，这个树的每一条支路 machine 都是可以产生的。
+一步错，步步错，因为 machine 在 training 的时候，它从来没有看过开头应该放 B 的时候，没有看过这个 case。
+```
+![](./images/1581993102530.png)
+![](./images/1581993159911.png)
 
-
+>**Scheduled Sampling**
 
 ![](./images/1581957429866.png)
+```
+给机器看自己生成的东西会变得很难 train，给机器看正确的答案 training 和 testing 会变的不一致，去两者之间的折中。
+在下一个 text step 会把拿什么当成 input，可以拿一个'筛子'决定。
+调'筛子'的几率，dynamic 决定的。
+```
 
+#### Beam Search
 
 ![](./images/1581957466755.png)
+```
 
-
+```
 ![](./images/1581957490265.png)
-
-
+```
+每一次在做 sequence generation 的时候，都会保留前 N 个 score 最高的可能。
+假设保留两个 score 最高的。 Beam size = 2。
+在 Training 的时候用不到，在 Testing 的时候用的到。
+```
 ![](./images/1581957535584.png)
-
+```
+先 input <BOS>，output 一个 distribution，假设保留 3 个 score 最高的 tip，在第一个 distribution 做三个选择(W,Y,X)，使用(W,Y,X) 各自输入得到的结果都是不一样的，将 (W,Y,X) 分别丢到 RNN 里面，得到 3 个不同的 distribution。
+分数 score：第一个 distribution 中 (W,Y,X) * 各自生成的 distribution 中的每一项得到几率。
+```
 ![](./images/1581957578235.png)
+```
+如果把前一个时间点生成的 distribution 丢到下一个时间点的 input，会有问题。
+```
 
+#### Object level v.s. Component level
 
 ![](./images/1581957627173.png)
+```
+通常 training 在做 Evaluation 的时候，minimize 的是 each step 的 cross-entropy。
+output "A cat a a a" 的 loss 就很大，然后会把一些词修正，一直 train 下去，对 machine 来说，loss 变化很小，但是对人的观感提高了。
+Evaluation 的时候要对整个句子做 Evaluation
+在 training 的时候定义一个 manager R，
+y：input 整个 sentence
+y^：正确的句子
+R(y,y^)：评估 y 和 y^ 的差距，但没办法微分，就用 reinforce learning 硬 train 一发。
+```
+
+#### Reinforcement learning
 
 ![](./images/1581957655011.png)
-
-
 ![](./images/1581957689157.png)
 
 
 ### Pointer Network
-
-
 
 ### Sequence Generation for setting Hyperparameters
