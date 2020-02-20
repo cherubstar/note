@@ -195,5 +195,47 @@ NMF 会强迫所有的 component 的 weight 都是正的。都是正的好处是
 比较像脸的一部分，而不是整张脸。
 ```
 
-
 ### Matrix Factorization
+
+![](./images/1582188229465.png)
+```
+有时候会有两种 object，他们之间受到某种共同的 latent factor 操控的。
+在这个 matrix 上面每一个 table 的 block 并不是随机出现。
+每个人跟每个角色之间有共性，有一些共同的 factor 操控。
+```
+![](./images/1582188264592.png)
+```
+每一个角色都是平面上的一个点，每一个角色都可以用一个 vector 来描述。
+如果某一个人的属性跟某一个角色所具有的属性是 match 的话，就会买对应的公仔。
+```
+![](./images/1582188293211.png)
+```
+无法观察一个的属性，没有办法直接知道每一个动漫任务的属性。
+```
+![](./images/1582188335785.png)
+```
+怎么凭这个关系来推论每一个人跟动漫人物的 latent factor。
+```
+![](./images/1582188363489.png)
+```
+有一些 information 是不知道的。
+```
+![](./images/1582188410296.png)
+![](./images/1582188437164.png)
+
+#### More about Matrix Factorization
+
+![](./images/1582188469111.png)
+```
+要做的更精确的话，加上
+bA：otakus 有多喜欢买公仔
+b1：角色有多流行
+这些跟属性无关。
+```
+#### Matrix Factorization for Topic analysis
+
+![](./images/1582188503890.png)
+
+#### More Related Approaches Not Introuced
+
+![](./images/1582188535355.png)
