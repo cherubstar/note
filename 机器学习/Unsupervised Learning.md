@@ -486,5 +486,10 @@ t-SNE 在 dimension reduction 以后的 space，选的 manager 是不一样的�
 如果要维持原来的几率的话，就把它们变成图片所示。
 如果本来距离比较近，它们的影响是比较小的，如果本来就有一段距离，从原来的 distribution 变成 t distribution 以后，会被拉的很远。
 ```
+![](./images/1582278017538.png)
+```
+会把 data point 聚集成一群一群的，如果 data point 本来只要有一个 gap，做完 t-SNE 以后，就会把那个 gap 强化，gap 就会变的特别明显。 
+```
 
+## Unsupervised Learning: Deep Auto-encoder
 
