@@ -647,3 +647,6 @@ pass
 
 ![](./images/1582293959460.png)
 ![](./images/1582293985743.png)
+
+## Unsupervised Learning: Generation
+
