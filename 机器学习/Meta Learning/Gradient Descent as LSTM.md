@@ -6,7 +6,7 @@ grammar_cjkRuby: true
 ---
 
 
-![](./images/1581172585022.png)
+![](./images/1582455022349.png)
 ```
 把 Learning Algorithm 当成 RNN。
 ```
@@ -36,8 +36,8 @@ zf 这个 vector 中的每一个 dimension 都是 1,
 zi 这个 vector 中的每一个 dimension 都是 η,
 可以说 Gradient Descent 就是 LSTM 的简化版。
 ```
-![](./images/1581174079726.png)
-![](./images/1581174151483.png)
+![](./images/1582455265030.png)
+![](./images/1582455143043.png)
 ```
 为了减少更改 code，假设 θ 和 input 的关系不存在。当成一般的 LSTM 硬 train 下去。
 ```
