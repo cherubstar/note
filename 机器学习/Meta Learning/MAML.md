@@ -24,7 +24,7 @@ Meta: 不同的任务有自己的 model，机器可以从过去的学习经验�
 Machine Learning: 找出一个函数 f 的能力
 Meta Learning: 找出一个可以生成 function 的函数 F 的能力。
 ```
-![](./images/1581090570824.png)
+![](./images/1582449641925.png)
 ```
 1、define a set of Learning algorithm
 2、goodness of Learning algorithm
@@ -47,7 +47,7 @@ f1、f2 表示 task1 学习出来的结果，task1、task2 的 Test data 放入 
 ```
 >**Meta Learning 和 Machine Learning 的区别**
 
-![](./images/1581156711983.png)
+![](./images/1582449809311.png)
 ```
 Machine Learning 需要准备 train image 和 test image。
 Meta Learning 需要准备 train task 和 test task，每一个 task 中都有 train image 和 test image。
@@ -63,7 +63,7 @@ Support set		Query set
 ```
 >**Omniglot**
 
-![](./images/1581158469511.png)
+![](./images/1582449869049.png)
 ![](./images/1581158772397.png)
 ```
 20 ways 1 shot：20 个 classes，每一个 classes 有 1 个 examples。
@@ -108,7 +108,7 @@ Model Pre-training: 找到一个 Φ 可以在训练任务上得到好的结果�
 >**Toy Example**
 
 ![](./images/1581165822745.png)
-![](./images/1581166045122.png)
+![](./images/1582450019875.png)
 ![](./images/1581166350495.png)
 
 
