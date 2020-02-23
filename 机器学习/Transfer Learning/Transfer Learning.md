@@ -6,14 +6,14 @@ grammar_cjkRuby: true
 ---
 
 
-![](./images/1581749643473.png)
+![](./images/1582456388425.png)
 ```
 Transfer Learning 意思是假设现在又一些跟现在进行的 task 没有直接相关的 data，能不能直接用这些没有相关的 data 来帮助我们做一些事情。
 比如：input 的 distribution 是相似的，都是动物的图片，但 task 的 label 是无关的，Similar domian，different tasks
 还有一种就是 Different domain，same tasks。
 Transfer Learning 做的是能不能在有一些不相干的 data 的情况下，来帮助现在要做的 task。
 ```
-![](./images/1581751111553.png)
+![](./images/1582456456294.png)
 ```
 用其他不相干的 data 帮助现在做的 task。
 ```
@@ -73,7 +73,7 @@ Image：copy 前面几层，只 train 最后几层。
 ```
 >**Layer Transfer - Image**
 
-![](./images/1581756003156.png)
+![](./images/1582456697890.png)
 ![](./images/1581756037857.png)
 
 #### Multitask Learning
@@ -125,7 +125,7 @@ Training data 和 Testing data 是非常的 mismatch 的。
 ```
 #### Domain-adversarial training
 
-![](./images/1581772826653.png)
+![](./images/1582456925373.png)
 ```
 直接 learn 一个 model，train 下去之后结果是会烂掉的。
 如果把一个 Neural Network 当成一个 feature extractor，让 Neural Nework 的前面几层可以看作是在抽取 feature，后面几层可以看作是在做 classification。
@@ -156,7 +156,7 @@ Domain classifier：Maximize domain classification accuracy
 
 >**Task description**
 
-![](./images/1581775092877.png)
+![](./images/1582457053907.png)
 ```
 Source Data 有 function 的 input 和 output，是有 label 的，视作 Training data。
 Traget Data 只有 function 的 input，是没有 label 的，实作 Testing data。
@@ -175,7 +175,7 @@ Training data 和 Testing data 是 Different tasks。
 ```
 在 testing 的时候，就算来了一种从来没有见过的 image，只要能把它的 attribute 找出来，就查表说在 database 里面哪一种动物它的 attribute 和现在 model 的 output 最接近。
 ```
-![](./images/1581775244191.png)
+![](./images/1582457156030.png)
 ```
 有可能 attribute 比较复杂，attribute 的 dimension 的可能很大，甚至可以做 attribute embedding。
 有一个 embedding space，把每一张 image 通过 transform 变成 embedding space 上的一个点，把所有 attribute 也变成 embedding space 上的点。
@@ -210,8 +210,8 @@ xn 通过 f(x)，yn 通过 g(y)，它的距离越接近越好，这是有问题�
 ```
 只需要有一个 word vector 和一个 语音辨识系统。
 ```
-![](./images/1581775379967.png)
-![](./images/1581781437890.png)
+![](./images/1582457362924.png)
+![](./images/1582457386347.png)
 
 ### 第三、四象限
 
@@ -224,7 +224,7 @@ Self-taught learning 和 Semi-supervised learning 有一些不一样的地方，
 Semi-supervised learning 的 labelled data 和 unlabelled data 是比较有关系的。
 在 Self-taught learning 里面，labelled data 和 unlabelled data 是比较远的。
 ```
-![](./images/1581775574103.png)
+![](./images/1582457296621.png)
 ```
 假如 Source data 够多，虽然是 unlabelled，可以去 learn 一个 feature extractor，总之有大量 data，它们没有 label，可以做的是用这些 data learn 好的 feature extractor，用这些 data learn 一个好的 representation。
 用这个 feature extractor 在 target data 抽取 feature。
