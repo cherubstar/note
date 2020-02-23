@@ -12,12 +12,12 @@ grammar_cjkRuby: true
 既做了 learning，又做了 testing。
 Face Verification：Training & Testing
 ```
-![](./images/1581175370648.png)
+![](./images/1582455435645.png)
 
 >**Siamese Network**
 
-![](./images/1581175571896.png)
-![](./images/1581175744739.png)
+![](./images/1582455500286.png)
+![](./images/1582455547042.png)
 ```
 Train 的图和 Test 的图都通过 CNN，得到两个 embedding，CNN 的参数通常是一样的，计算两个 embedding vector 的 similarity。
 Train 资料和 Test 资料是同一个人，output 出的 score 越大越好。
@@ -43,11 +43,11 @@ Siamese Network 就是一个单纯的 Binary classification problem，每一个 
 
 >**Prototypical  Network**
 
-![](./images/1581176777272.png)
+![](./images/1582455718768.png)
 
 >**Matching  Network**
-s
-![](./images/1581176927654.png)
+
+![](./images/1582455795909.png)
 
 >**Relation  Network**
 
@@ -56,5 +56,5 @@ s
 
 >**Generate Data**
 
-![](./images/1581177212086.png)
-![](./images/1581177310014.png)
+![](./images/1582455920782.png)
+![](./images/1582455857414.png)
