@@ -46,7 +46,7 @@ grammar_cjkRuby: true
 既然我们要一个比较小的 network，为什么一开始不 train 一个比较小的 network？
 因为小的 network 比较难 train，大的 network 比较容易 optimize，在 train network 的时候，会有很多 local minimum、saddle point 的问题，但是如果 network 够大，这些问题就比较不严重，只要 network 够大，用 gradient descent 就可以找到 xxx 的 solution。
 ```
-![](./images/1581859617073.png)
+![](./images/1582467377990.png)
 ```
 train 一个大的 network，train 下去，然后 prune 一些不要的 weight
 
@@ -103,7 +103,7 @@ Temperature 的用途。
 在找 Binary Weights 的同时，keep 一组 real value 的参数
 Binary Connect 的训练其实和一般的 network很像，先 random initial 一组参数，这组参数可以是 real 的，在 Binary Connect 不是拿这一组参数计算它的 gradient，去找跟着一组参数最接近的一个有 Binary Weights 的 network，然后根据这个 Binary Weights 的 network 去计算它的 gradient，把这一组参数根据红色箭头的方向来继续 update。
 ```
-![](./images/1581862947928.png)
+![](./images/1582467595948.png)
 
 ### Architecture Design
 
@@ -171,5 +171,5 @@ Depthwise Separable Convolution：k * k * I + I * O
 train 一把 network，从最深的到最浅的，根据 device 的行径，选择一个设当的 network
 坏处：需要存一大堆的 network，占储存空间。
 ```
-![](./images/1581864621872.png)
+![](./images/1582467694152.png)
 
