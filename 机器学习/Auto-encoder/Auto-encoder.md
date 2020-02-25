@@ -88,28 +88,53 @@ train 一个 encoder，input 是声音讯号，声音讯号的每一小段都用
 
 ![](./images/1582628610174.png)
 ```
-
+怎么让 encoder 的 output 更容易被解释。
 ```
+
+### Feature Disentangle
+
 ![](./images/1582628685352.png)
-
-
+```
+在 train auto-encoder 的时候，encoder 的 input object(影像，声音，一段文字)，这些 object 里面包含了各式各样复杂的资讯，比如一段声音里面不止有文字，语音内容的资讯，还包含了说话人的声音的特质。
+一个 encoder 的 input 包含了各式的资讯。
+不知道向量里面哪些维度是说话人的资讯，哪些维度是声音讯号。
+```
 ![](./images/1582628714036.png)
+```
+encoder 输出一个 vector 之后，vector 可能是 200 维，假设前 100 维是内容的资讯，后 100 维是语者的资讯。
+变形后，有两个 encoder，一个 encoder 专门抽出内容的资讯，另一个 encoder 专门抽出语者的资讯。把内容的资讯和语者的资讯拼在一起丢给 decoder，才能还原原来的信号。
+```
 
+#### Feature Disentangle - Voice Conversion
 
 ![](./images/1582628756201.png)
-
-
+```
+将 内容的资讯和语者的资讯 分开。
+```
 ![](./images/1582628781942.png)
-
-
+```
+可以将女生的 内容的资讯 和 男生的 语者的资讯放在一起，然后男生说出 How are you？
+可以做一个变声器。
+```
 ![](./images/1582628811947.png)
 
+#### Feature Disentangle - Adversarial Training
 
-![](./images/1582628849115.png)
+![](./images/1582631560688.png)
+```
+用 GAN 的概念，怎么训练一个 encoder，让这个 encoder 前 100 维就是声音内容的资讯，后 100 维是语者的资讯？
+训练一个语者的 classifier，这个 classifier 会把 encoder output 的向量 input 进去，根据这个向量判断这个向量它来源哪个语者。encoder 做的事情就是想办法骗过 classifier。想办法让这个语者的 classifier 正确率越低越好。
+```
 
+#### Feature Disentangle - Designed Network Architecture
 
 ![](./images/1582628878913.png)
-
-
+```
+代表不同资讯的 embedding 使用不同 encoder output 出来的。
+instance normalization：实例规范化
+在 NN 里面，设计一种特别的 layer，这个 layer 可以抹掉 global 资讯，可以抹掉整个 object 每一个小部分都有的资讯。 
+```
 ![](./images/1582628917382.png)
-
+```
+同时在 Decoder 上加一个特别的 layer AdaIN。
+```
