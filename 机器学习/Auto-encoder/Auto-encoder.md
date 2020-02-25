@@ -138,3 +138,58 @@ instance normalization：实例规范化
 ```
 同时在 Decoder 上加一个特别的 layer AdaIN。
 ```
+
+### Discrete Representation
+
+![](./images/1582633478914.png)
+```
+在 train auto-encoder 的时候，哪个 embedding 是 continuous vector，是一个向量。
+进一步期待说 encoder 能不能够 output discribed 的 embedding。就更容易解读 output 的 vector 是什么意思。就会更容易的做 cluster。
+举例：
+能不能让 encoder 的 output 就是 One-hot vector，只有一维是 1，其他都是 0。只要同一个维度是 1，那 object 就统统属于同一个 class。
+怎么做呢？
+· One-hot
+现在 encoder 本来的 output 是 continuous vector，看 continuous vector 那一维最大，就把那一维改成 1，其他维都改成 0，得到 One-hot vector。把 One-hot vector 丢给 decoder，然后 decoder 还原原来的 image。
+· Binary (比 One-hot 要更好)
+train 一个 encoder，output 一个 vector，这个 vector 里面如果值大于 0.5 的话，就在 Binary vector 里面改成 1，值小于 0.5 的话，就在 Binary vector 里面改成 0，然后把 Binary vector 丢给 decoder，让 decoder 还原原来的图片。
+
+中间 vector 的转换是不能微分的，但是有办法可以做到。
+
+Binary 相比 One-hot 要更好。
+假设 database 中的 data 可以分成 1024 群，那 One-hot vector 应该要有 1024 维，但是如果是 Binary vector 的话，只需要 10 维。相比之下 Binary vector 需要的参数少。
+Binary vector 还有一个好处是它有机会可以处理训练资料里面从来没有看过的 class。
+```
+
+>**Vector Quantized Variational Auto-encoder(VQVAE)**
+
+![](./images/1582633515443.png)
+```
+Codebook: 里面是一排向量，不是人设置的，是 learn 出来的，里面 5 个向量也是 Network 参数。
+
+image -> encoder -> continuous vector(接下来用这个 vector 和 Codebook 中的每一个向量计算 similarity，相似度高的 vector 用来当作 decoder 的 input) vector3 -> decoder(train 的时候还是 minimize reconstruction error) -> new image。
+因为 Codebook 中只有 5 种向量，所以 decoder 的 input 只有 5 种选择。
+
+encoder、Codebook、decoder 合起来是没办法微分的。有可以 train 没有办法微分的 paper。
+```
+
+### Sequence as Embedding
+
+![](./images/1582633555481.png)
+```
+可以让 Embedding、latent representation 不再是一个向量，可以是一个 sentence。
+
+seq2seq2seq auto-encoder
+
+document -> encoder -> word sequence(不再是一个向量，这里是一串文字) -> decoder -> 试图还原原来的 document。
+
+中间的 word sequence(文字) 可能是 document 的摘要。
+这样是不够的。
+```
+![](./images/1582633586011.png)
+```
+怎么让 encoder 输出的文字是可以人看的懂的呢？
+需要用到 GAN 的概念。
+需要 train 一个 discriminator(或者 binary classifier)，作用是看 word sequence 是人写的，还是不是人写的。
+encoder 就要学习去骗过 discriminator。
+```
+
