@@ -195,3 +195,4 @@ encoder 就要学习去骗过 discriminator。
 如果一个 loss function 不能微分，就用 reinforcement learning 硬做就可以了。
 ```
 
+![](./images/1582637530076.png)
