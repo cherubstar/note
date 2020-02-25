@@ -20,7 +20,7 @@ grammar_cjkRuby: true
 | estimate | n. / v. | 估计;估价;估计的成本 / 估价;估算 |
 | multinomial | n. / adj.  | 多项式 / 多项的 |
 | mixture | n.  | 混合;结合体;混合物;集合体 |
-|  | n.  |  |
-|  | n.  |  |
-|  | n.  |  |
+| anime | n.  | 动漫 |
+| feature disentangle | n.  | 特征分离 |
+| instance normalization | n.  | 实例规范化 |
 |  | n.  |  |
