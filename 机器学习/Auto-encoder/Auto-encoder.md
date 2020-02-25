@@ -191,5 +191,7 @@ document -> encoder -> word sequence(不再是一个向量，这里是一串文�
 需要用到 GAN 的概念。
 需要 train 一个 discriminator(或者 binary classifier)，作用是看 word sequence 是人写的，还是不是人写的。
 encoder 就要学习去骗过 discriminator。
+
+如果一个 loss function 不能微分，就用 reinforcement learning 硬做就可以了。
 ```
 
