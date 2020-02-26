@@ -40,8 +40,40 @@ grammar_cjkRuby: true
 >激活(或activate切换不同python版本)的虚拟环境。
 >activate env_name
 
-
-
 >**conda remove --name base  tesorflow**
 >conda remove --name env_name  package_name
 >删除环境中的某个包
+
+-------------------
+-------------------
+
+### 三、添加环境到 jupyter 中
+
+```
+1、查看下虚拟环境	-	conda env list
+2、激活你要添加的环境	-	activate tensorflow
+3、安装 ipykernel	-	conda install ipykernel
+4、将环境写入notebook的kernel中	-	
+python -m ipykernel install --user --name tensorflow --display-name "Python (tensorflow)"
+5、打开 jupyter
+```
+
+>**查看下虚拟环境**
+
+![](./images/1582676786137.png)
+
+>**激活你要添加的环境**
+
+![](./images/1582677322848.png)
+
+>**安装 ipykernel**
+
+![](./images/1582677281267.png)
+
+>**将环境写入 notebook 的 kernel 中**
+
+![](./images/1582677357456.png)
+
+>**打开 jupyter**
+
+![](./images/1582677432088.png)
