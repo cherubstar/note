@@ -108,3 +108,88 @@ learn 两个 Agent。
 ![](./images/1582638095292.png)
 ![](./images/1582871670373.png)
 
+
+### Policy-based Approach
+
+![](./images/1582872195572.png)
+```
+learn a Actor
+这个 Actor 通常写成 π，input 就是 machine 看到的 Observation，output 就是 machine 采取的 action。通过 reward 找出 Actor（有些文献是叫 policy）。
+```
+
+### Three Steps for Deep Learning
+
+![](./images/1582872139631.png)
+
+
+#### Neural Network as Actor
+
+![](./images/1582872973665.png)
+```
+这个 NN 的 input 就是 machine 看到的 Observation，这个 Observation 是一个 pixels，可以把它表示成 vector or matrix。output 就是可以采取的 action。output 只需要三个 neuron，(left,right,fire)。
+这个 NN 怎么决定这个 Actor 采取哪一个 action 呢？
+通常做法是把 image 丢到 NN 中，然后 output 出的 dimension 会有对应的 score。
+在做 Policy Gradient 的时候，会假设 Actor 是 ，Policy 是 
+NN 是 generalization 的。
+```
+
+#### Goodness of Actor
+
+![](./images/1582873060151.png)
+![](./images/1582873131870.png)
+
+![](./images/1582875157907.png)
+```
+假设有一个 Actor，这个 Actor 是一个 NN，假设它的参数是 θ，所以 actor 会用 πθ(s) 表示，input 就是 s，s 就是 machine 看到 Obversation。
+怎么知道一个 actor 是好还是不好呢？
+通过一个 video game。
+玩完之后得到的 Total Reward 可以写成 Rθ，Rθ 才是需要 maximize 的。
+即使用的听一个 actor 玩的这个 game，得到的 Total Reward Rθ 也是不一样的。
+Rθ 是 random 的。所以做的是不是去 maximize 某一次玩游戏得到的 Rθ，希望 maximize 的 Rθ 的期望值。
+```
+![](./images/1582875787892.png)
+```
+τ 是一个 sequence，R(τ) 是 Total Reward。
+```
+
+#### Pick the best Actor
+
+![](./images/1582875818113.png)
+
+![](./images/1582875921615.png)
+
+
+![](./images/1582875962038.png)
+
+
+![](./images/1582875994646.png)
+
+
+![](./images/1582876018141.png)
+
+![](./images/1582876062165.png)
+
+
+![](./images/1582876094775.png)
+
+
+![](./images/1582876178842.png)
+
+
+![](./images/1582876242145.png)
+
+![](./images/1582876267255.png)
+
+![](./images/1582876295249.png)
+
+![](./images/1582876427950.png)
+
+![](./images/1582876501799.png)
+
+![](./images/1582876535453.png)
+
+![](./images/1582876569038.png)
+
+![](./images/1582876601562.png)
+
+![](./images/1582876636548.png)
