@@ -15,7 +15,7 @@ grammar_cjkRuby: true
 | Interactive retrieval | n.  | 交互式检索 |
 | interactive | adj.  | 合作的;相互影响的;互相配合的;交互式的;人机对话的; 互动的 |
 | retrieval | n.  | 取回; 索回; 数据检索 |
-|  | n.  |  |
+| episode | n.  | 片段，插曲; |
 |  | n.  |  |
 |  | n.  |  |
 |  | n.  |  |
