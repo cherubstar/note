@@ -97,10 +97,14 @@ learn 两个 Agent。
 ![](./images/1582638035990.png)
 
 
+### Dfficult of Reinforcement Learning
 
 ![](./images/1582638063359.png)
-
-
+```
+· Reward delay
+· Agent's actions affect the sunsequent data it receives
+```
 
 ![](./images/1582638095292.png)
+![](./images/1582871670373.png)
 
