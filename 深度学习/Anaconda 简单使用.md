@@ -55,7 +55,8 @@ grammar_cjkRuby: true
 3、安装 ipykernel	-	conda install ipykernel
 4、将环境写入notebook的kernel中	-	
 python -m ipykernel install --user --name tensorflow --display-name "Python (tensorflow)"
-5、打开 jupyter
+5、将环境从 notebook 中去掉 - jupyter kernelspec remove tensorflow
+6、打开 jupyter
 ```
 
 >**查看下虚拟环境**
@@ -73,6 +74,10 @@ python -m ipykernel install --user --name tensorflow --display-name "Python (ten
 >**将环境写入 notebook 的 kernel 中**
 
 ![](./images/1582677357456.png)
+
+>**将环境从 notebook 中去掉**
+
+![](./images/1585912994429.png)
 
 >**打开 jupyter**
 
